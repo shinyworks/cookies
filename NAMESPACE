@@ -2,4 +2,6 @@
 
 export(add_cookie_javascript)
 export(cookie_dependency)
+export(extract_cookie)
+export(extract_cookies)
 export(set_cookie)

@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # cookies
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/r4ds/cookies/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r4ds/cookies?branch=main)
+[![R-CMD-check](https://github.com/r4ds/cookies/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r4ds/cookies/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Cookies are name-value pairs that are saved in your browser by a website. 

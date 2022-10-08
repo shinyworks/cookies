@@ -17,16 +17,68 @@ easy as possible to use cookies in Shiny apps.
 
 ## Installation
 
-You can install the development version of cookies like so:
+I intend to release this package to CRAN as soon as I finish the basic
+functionality.
+
+You can install the development version of {cookies} from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("r4ds/cookies")
 ```
 
-## Example
+## Examples
 
-Coming soon.
+Wrap your ui with `add_cookie_handlers()` to add a `cookie` object to
+the shiny `input`.
+
+``` r
+ui <- shiny::fluidPage(
+    title = "Hello Shiny!",
+  fluidRow(
+    column(width = 4,
+      "4"
+    ),
+    column(width = 3, offset = 2,
+      "3 offset 2"
+    )
+  )
+)
+
+ui_with_cookie_handlers <- add_cookie_handlers(ui)
+```
+
+If you need to set a cookie when they load the app, use
+`set_cookie_on_load()`.
+
+``` r
+part_of_ui <- set_cookie_on_load(
+  cookie_name = "my_cookie", 
+  contents = "contents of my cookie",
+  expiration = 10
+)
+```
+
+Use `extract_cookie()` to extract the value of a named cookie from the
+request object, passed to the ui when a Shiny app loads.
+
+``` r
+req <- list(HTTP_COOKIE = "cookie1=expected_value; cookie2=1; cookie3=2")
+extract_cookie(req, "cookie1")
+#> [1] "expected_value"
+
+ui <- function(request) {
+  cookie1 <- extract_cookie(request, "cookie1")
+  if (cookie1 == "expected_value") {
+    "A ui for the expected value."
+  } else {
+    "A different ui."
+  }
+}
+ui(req)
+#> [1] "A ui for the expected value."
+```
 
 ## Code of Conduct
 

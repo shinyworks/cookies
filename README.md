@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cookies
+# cookies <a href="https://r4ds.github.io/cookies/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
 
 <!-- badges: start -->
 

@@ -4,12 +4,14 @@
 \alias{extract_cookie}
 \title{Extract an Individual Cookie from a Shiny Request}
 \usage{
-extract_cookie(request, cookie_name)
+extract_cookie(request, name)
 }
 \arguments{
 \item{request}{A shiny request object.}
 
-\item{cookie_name}{The name of the individual cookie to extract.}
+\item{name}{The name of the cookie. Can contain any US-ASCII characters
+except for: the control character, space, a tab, or separator characters
+like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 }
 \value{
 The contents of that cookie.

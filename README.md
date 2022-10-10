@@ -54,7 +54,7 @@ If you need to set a cookie when they load the app, use
 
 ``` r
 part_of_ui <- set_cookie_on_load(
-  cookie_name = "my_cookie", 
+  name = "my_cookie", 
   contents = "contents of my cookie",
   expiration = 10
 )

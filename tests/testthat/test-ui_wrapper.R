@@ -27,4 +27,3 @@ test_that("add_cookie_handlers adds js to shiny-like things.", {
   expect_snapshot(test_result[[1]])
   expect_snapshot(test_result[[2]])
 })
-

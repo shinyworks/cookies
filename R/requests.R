@@ -4,7 +4,7 @@
 #' This function extracts the value of a named cookie from that request.
 #'
 #' @inheritParams extract_cookies
-#' @param cookie_name The name of the individual cookie to extract.
+#' @inheritParams .shared-parameters
 #'
 #' @return The contents of that cookie.
 #' @export
@@ -14,11 +14,11 @@
 #' extract_cookie(req, "cookie2")
 #' extract_cookie(list(), "cookie1")
 #' extract_cookie(NULL, "cookie1")
-extract_cookie <- function(request, cookie_name) {
+extract_cookie <- function(request, name) {
   cookies <- extract_cookies(request = request)
 
-  if (length(cookies) && cookie_name %in% names(cookies)) {
-    return(cookies[[cookie_name]])
+  if (length(cookies) && name %in% names(cookies)) {
+    return(cookies[[name]])
   } else {
     return(NA_character_)
   }

@@ -1,17 +1,15 @@
 Package: cookies
 Title: Use Browser Cookies with Shiny
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4781-4346")),
-    person(given = "Klaus", 
-           family = "Hartl", 
-           role = c("cph"), 
-           comment = "js-cookie"),
-    person(given = "Fagner", 
-           family = "Brack",
-           role = c("cph"), 
-           comment = "js-cookie")
+    person("Klaus", "Hartl", 
+           role = c("cph"), comment = "js-cookie"),
+    person("Fagner", "Brack",
+           role = c("cph"), comment = "js-cookie"),
+    person("John", "Coene",
+           role = "cph", comment = "JavaScript for R chapter on cookies")
     )
 Description: Cookies are name-value pairs that are saved in your browser by a 
     website. Cookies allow websites to persist information about the user and
@@ -25,10 +23,12 @@ URL: https://github.com/r4ds/cookies
 BugReports: https://github.com/r4ds/cookies/issues
 Suggests: 
     covr,
+    roxygen2,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     htmltools,
     httpuv,
+    jsonlite,
     shiny,
     stats

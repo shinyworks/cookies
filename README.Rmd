@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cookies
+# cookies <a href="https://r4ds.github.io/cookies/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/r4ds/cookies/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r4ds/cookies?branch=main)

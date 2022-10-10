@@ -49,8 +49,7 @@ ui <- shiny::fluidPage(
 ui_with_cookie_handlers <- add_cookie_handlers(ui)
 ```
 
-If you need to set a cookie when they load the app, use
-`set_cookie_on_load()`.
+To set a cookie when the user loads the app, use `set_cookie_on_load()`.
 
 ``` r
 part_of_ui <- set_cookie_on_load(
@@ -58,6 +57,32 @@ part_of_ui <- set_cookie_on_load(
   contents = "contents of my cookie",
   expiration = 10
 )
+```
+
+Use `set_cookie()` and `remove_cookie()` to manage cookies in your app.
+
+``` r
+server <- function(input, output, session) {
+  shiny::observeEvent(input$cookie_set, {
+    set_cookie(
+      name = "my_cookie",
+      contents = "contents of my cookie",
+      expiration = 10
+    )
+  })
+  
+  shiny::observeEvent(input$cookie_remove, {
+    remove_cookie(name = "my_cookie")
+  })
+  
+  output$display_cookie <- renderUI({
+    if(!is.null(input$cookies$my_cookie)) {
+      shiny::h3("Your cookie:", input$cookies$my_cookie)
+    } else {
+      shiny::h3("Enter some text.")
+    }
+  })
+}
 ```
 
 Use `extract_cookie()` to extract the value of a named cookie from the

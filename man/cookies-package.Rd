@@ -12,6 +12,7 @@ Cookies are name-value pairs that are saved in your browser by a website. Cookie
 Useful links:
 \itemize{
   \item \url{https://github.com/r4ds/cookies}
+  \item \url{https://r4ds.github.io/cookies/}
   \item Report bugs at \url{https://github.com/r4ds/cookies/issues}
 }
 

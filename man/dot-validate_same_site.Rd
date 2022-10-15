@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa.R
 \name{.validate_same_site}
 \alias{.validate_same_site}
-\title{Make Sure same_site is Valid}
+\title{Ensure same_site is valid}
 \usage{
 .validate_same_site(same_site, secure_only)
 }
@@ -18,6 +18,6 @@ accessible via secure (\verb{https:}) requests (except on localhost).}
 One of \code{NULL}, "Strict", "Lax", or "None".
 }
 \description{
-Make Sure same_site is Valid
+Ensure same_site is valid
 }
 \keyword{internal}

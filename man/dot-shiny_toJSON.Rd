@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa.R
 \name{.shiny_toJSON}
 \alias{.shiny_toJSON}
-\title{Prep Data for Javascript}
+\title{Prep data for javascript}
 \usage{
 .shiny_toJSON(
   x,
@@ -64,7 +64,8 @@ An exception is that objects of class \code{AsIs} (i.e. wrapped in \code{\link[=
 Jsonified text.
 }
 \description{
-This is an unexported function in shiny, and has been directly copy/paste.
-This formats things in the way Shiny's JS functions expect.
+This is an unexported function in shiny, and has been directly copy/pasted
+(other than the name and documentation). This function formats things in the
+way shiny's JS functions expect.
 }
 \keyword{internal}

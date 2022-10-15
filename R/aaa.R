@@ -1,26 +1,28 @@
-#' Parameters Used in Multiple Functions
+#' Parameters used in multiple functions
 #'
-#' @param name The name of the cookie. Can contain any US-ASCII characters
-#'   except for: the control character, space, a tab, or separator characters
-#'   like ( ) < > @ , ; : \\ " / \[ \] ? = \{ \}.
-#' @param contents The contents of the cookie as a single character value.
-#' @param expiration Days after which the cookie should expire.
-#' @param secure_only Logical indicating whether the cookie should only be
-#'   accessible via secure (`https:`) requests (except on localhost).
+#' @param cookie_value The contents of the cookie as a single character value.
 #' @param domain The host to which the cookie will be sent (including
 #'   subdomains). If this is `NULL` (default) the cookie will only be sent to
 #'   the host of the page where this cookie was set (not including subdomains).
+#' @param expiration Days after which the cookie should expire.
+#' @param cookie_name The name of the cookie. Can contain any US-ASCII
+#'   characters except for: the control character, space, a tab, or separator
+#'   characters like ( ) < > @ , ; : \\ " / \[ \] ? = \{ \}.
 #' @param path The path that must exist in the requested URL for the browser to
 #'   send this cookie. Includes subdirectories.
 #' @param same_site One of "strict", "lax" (default), or "none", indicating when
 #'   the cookie should be sent. When `same_site = "none"`, `secure_only` must be
 #'   `TRUE`.
+#' @param secure_only Logical indicating whether the cookie should only be
+#'   accessible via secure (`https:`) requests (except on localhost).
+#' @param ui A 0- or 1-argument function defining the ui of a shiny app, or a
+#'   [shiny::tagList()].
 #'
 #' @name .shared-parameters
 #' @keywords internal
 NULL
 
-#' Make Sure Cookie Attributes are Valid
+#' Ensure cookie attributes are valid
 #'
 #' @inheritParams .shared-parameters
 #'
@@ -44,7 +46,7 @@ NULL
   return(attributes)
 }
 
-#' Make Sure same_site is Valid
+#' Ensure same_site is valid
 #'
 #' @inheritParams .shared-parameters
 #'
@@ -74,10 +76,11 @@ NULL
 }
 
 
-#' Prep Data for Javascript
+#' Prep data for javascript
 #'
-#' This is an unexported function in shiny, and has been directly copy/paste.
-#' This formats things in the way Shiny's JS functions expect.
+#' This is an unexported function in shiny, and has been directly copy/pasted
+#' (other than the name and documentation). This function formats things in the
+#' way shiny's JS functions expect.
 #'
 #' @inheritParams jsonlite::toJSON
 #' @inheritDotParams jsonlite::toJSON

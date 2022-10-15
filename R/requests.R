@@ -1,6 +1,6 @@
-#' Extract an Individual Cookie from a Shiny Request
+#' Extract an individual cookie from a shiny request
 #'
-#' The Shiny request object includes any cookies that are available to the app.
+#' The shiny request object includes any cookies that are available to the app.
 #' This function extracts the value of a named cookie from that request.
 #'
 #' @inheritParams extract_cookies
@@ -14,19 +14,19 @@
 #' extract_cookie(req, "cookie2")
 #' extract_cookie(list(), "cookie1")
 #' extract_cookie(NULL, "cookie1")
-extract_cookie <- function(request, name) {
+extract_cookie <- function(request, cookie_name) {
   cookies <- extract_cookies(request = request)
 
-  if (length(cookies) && name %in% names(cookies)) {
-    return(cookies[[name]])
+  if (length(cookies) && cookie_name %in% names(cookies)) {
+    return(cookies[[cookie_name]])
   } else {
     return(NA_character_)
   }
 }
 
-#' Extract All Cookies from a Shiny Request
+#' Extract all cookies from a shiny request
 #'
-#' The Shiny request object includes any cookies that are available to the app.
+#' The shiny request object includes any cookies that are available to the app.
 #' This function extracts those cookies as a named list.
 #'
 #' @param request A shiny request object.

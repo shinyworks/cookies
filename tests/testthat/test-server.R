@@ -1,4 +1,4 @@
-# Stub a session so we can test these outside of Shiny.
+# Stub a session so we can test these outside of shiny.
 session <- list()
 session$sendCustomMessage <- function(type, message) {
   my_types <- c("cookie-set", "cookie-remove")
@@ -13,23 +13,23 @@ session$sendCustomMessage <- function(type, message) {
 test_that("set_cookie works.", {
   expect_snapshot(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       session = session
     )
   )
   expect_snapshot(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       expiration = 22,
       session = session
     )
   )
   expect_snapshot(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       expiration = 22,
       secure_only = TRUE,
       domain = "this",
@@ -40,8 +40,8 @@ test_that("set_cookie works.", {
   )
   expect_error(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       secure_only = FALSE,
       same_site = "None",
       session = session
@@ -50,8 +50,8 @@ test_that("set_cookie works.", {
   )
   expect_error(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       same_site = "blargh",
       session = session
     ),
@@ -59,8 +59,8 @@ test_that("set_cookie works.", {
   )
   expect_error(
     set_cookie(
-      name = "testname",
-      contents = "test contents",
+      cookie_name = "testname",
+      cookie_value = "test contents",
       same_site = 1:3,
       session = session
     ),

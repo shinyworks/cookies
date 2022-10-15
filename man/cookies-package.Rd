@@ -6,7 +6,7 @@
 \alias{cookies-package}
 \title{cookies: Use Browser Cookies with Shiny}
 \description{
-Cookies are name-value pairs that are saved in your browser by a website. Cookies allow websites to persist information about the user and their use of the website. This package provides tools for working with cookies in Shiny apps.
+Cookies are name-value pairs that are saved in your browser by a website. Cookies allow websites to persist information about the user and their use of the website. This package provides tools for working with cookies in shiny apps.
 }
 \seealso{
 Useful links:

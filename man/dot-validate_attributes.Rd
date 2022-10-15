@@ -2,7 +2,7 @@
 % Please edit documentation in R/aaa.R
 \name{.validate_attributes}
 \alias{.validate_attributes}
-\title{Make Sure Cookie Attributes are Valid}
+\title{Ensure cookie attributes are valid}
 \usage{
 .validate_attributes(expiration, secure_only, domain, path, same_site)
 }
@@ -27,6 +27,6 @@ the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} mu
 A list of attributes.
 }
 \description{
-Make Sure Cookie Attributes are Valid
+Ensure cookie attributes are valid
 }
 \keyword{internal}

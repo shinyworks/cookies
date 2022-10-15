@@ -2,22 +2,19 @@
 % Please edit documentation in R/aaa.R
 \name{.shared-parameters}
 \alias{.shared-parameters}
-\title{Parameters Used in Multiple Functions}
+\title{Parameters used in multiple functions}
 \arguments{
-\item{name}{The name of the cookie. Can contain any US-ASCII characters
-except for: the control character, space, a tab, or separator characters
-like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
-
-\item{contents}{The contents of the cookie as a single character value.}
-
-\item{expiration}{Days after which the cookie should expire.}
-
-\item{secure_only}{Logical indicating whether the cookie should only be
-accessible via secure (\verb{https:}) requests (except on localhost).}
+\item{cookie_value}{The contents of the cookie as a single character value.}
 
 \item{domain}{The host to which the cookie will be sent (including
 subdomains). If this is \code{NULL} (default) the cookie will only be sent to
 the host of the page where this cookie was set (not including subdomains).}
+
+\item{expiration}{Days after which the cookie should expire.}
+
+\item{cookie_name}{The name of the cookie. Can contain any US-ASCII
+characters except for: the control character, space, a tab, or separator
+characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 
 \item{path}{The path that must exist in the requested URL for the browser to
 send this cookie. Includes subdirectories.}
@@ -25,8 +22,14 @@ send this cookie. Includes subdirectories.}
 \item{same_site}{One of "strict", "lax" (default), or "none", indicating when
 the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} must be
 \code{TRUE}.}
+
+\item{secure_only}{Logical indicating whether the cookie should only be
+accessible via secure (\verb{https:}) requests (except on localhost).}
+
+\item{ui}{A 0- or 1-argument function defining the ui of a shiny app, or a
+\code{\link[shiny:reexports]{shiny::tagList()}}.}
 }
 \description{
-Parameters Used in Multiple Functions
+Parameters used in multiple functions
 }
 \keyword{internal}

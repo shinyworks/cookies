@@ -2,11 +2,11 @@
 % Please edit documentation in R/onload.R
 \name{set_cookie_on_load}
 \alias{set_cookie_on_load}
-\title{Shiny Tag to Add Cookies on Page Load}
+\title{Shiny tag to add cookies on page load}
 \usage{
 set_cookie_on_load(
-  name,
-  contents,
+  cookie_name,
+  cookie_value,
   expiration = 90,
   secure_only = NULL,
   domain = NULL,
@@ -15,11 +15,11 @@ set_cookie_on_load(
 )
 }
 \arguments{
-\item{name}{The name of the cookie. Can contain any US-ASCII characters
-except for: the control character, space, a tab, or separator characters
-like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+\item{cookie_name}{The name of the cookie. Can contain any US-ASCII
+characters except for: the control character, space, a tab, or separator
+characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 
-\item{contents}{The contents of the cookie as a single character value.}
+\item{cookie_value}{The contents of the cookie as a single character value.}
 
 \item{expiration}{Days after which the cookie should expire.}
 
@@ -42,8 +42,8 @@ A \code{\link[shiny:reexports]{shiny::tagList()}} that provides the HTML and jav
 cookie.
 }
 \description{
-Generates javascript which will set a cookie in the user's browser when the
-Shiny app first loads.
+Generate a \code{\link[shiny:reexports]{shiny::tagList()}} which uses JavaScript to set a cookie in the
+user's browser when the shiny app loads.
 }
 \examples{
 set_cookie_on_load("my_cookie", "contents of my cookie")

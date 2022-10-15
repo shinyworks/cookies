@@ -13,7 +13,7 @@ coverage](https://codecov.io/gh/r4ds/cookies/branch/main/graph/badge.svg)](https
 Cookies are name-value pairs that are saved in your browser by a
 website. Cookies allow websites to persist information about the user
 and their use of the website. The goal of {cookies} it to make it as
-easy as possible to use cookies in Shiny apps.
+easy as possible to use cookies in shiny apps.
 
 ## Installation
 
@@ -35,7 +35,7 @@ the shiny `input`.
 
 ``` r
 ui <- shiny::fluidPage(
-    title = "Hello Shiny!",
+    title = "Hello shiny!",
   fluidRow(
     column(width = 4,
       "4"
@@ -53,8 +53,8 @@ To set a cookie when the user loads the app, use `set_cookie_on_load()`.
 
 ``` r
 part_of_ui <- set_cookie_on_load(
-  name = "my_cookie", 
-  contents = "contents of my cookie",
+  cookie_name = "my_cookie", 
+  cookie_value = "contents of my cookie",
   expiration = 10
 )
 ```
@@ -65,14 +65,14 @@ Use `set_cookie()` and `remove_cookie()` to manage cookies in your app.
 server <- function(input, output, session) {
   shiny::observeEvent(input$cookie_set, {
     set_cookie(
-      name = "my_cookie",
-      contents = "contents of my cookie",
+      cookie_name = "my_cookie",
+      cookie_value = "contents of my cookie",
       expiration = 10
     )
   })
   
   shiny::observeEvent(input$cookie_remove, {
-    remove_cookie(name = "my_cookie")
+    remove_cookie(cookie_name = "my_cookie")
   })
   
   output$display_cookie <- renderUI({
@@ -86,7 +86,7 @@ server <- function(input, output, session) {
 ```
 
 Use `extract_cookie()` to extract the value of a named cookie from the
-request object, passed to the ui when a Shiny app loads.
+request object, passed to the ui when a shiny app loads.
 
 ``` r
 req <- list(HTTP_COOKIE = "cookie1=expected_value; cookie2=1; cookie3=2")

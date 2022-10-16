@@ -11,7 +11,7 @@
 accessible via secure (\verb{https:}) requests (except on localhost).}
 }
 \value{
-\code{NULL} or \code{secure_only} as a logical.
+\code{NULL} or \code{TRUE}.
 }
 \description{
 Ensure secure_only is valid

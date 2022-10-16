@@ -34,6 +34,24 @@
     <loc>https://r4ds.github.io/cookies/reference/cookies-package.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-attributes_string.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-generate_http_attribute_strings.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-http_attributes.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-http_cookie_string.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-http_date.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-javascript_attributes.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-shared-parameters.html</loc>
   </url>
   <url>
@@ -43,7 +61,22 @@
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_attributes.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_domain.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_expiration.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_http_only.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_path.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_same_site.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_secure_only.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/cookies/reference/extract_cookie.html</loc>
@@ -62,5 +95,8 @@
   </url>
   <url>
     <loc>https://r4ds.github.io/cookies/reference/set_cookie_on_load.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/set_cookie_response.html</loc>
   </url>
 </urlset>

@@ -12,7 +12,7 @@ set_cookie_response(
   domain = NULL,
   path = NULL,
   same_site = NULL,
-  http_only = NULL,
+  http_only = FALSE,
   ...
 )
 }

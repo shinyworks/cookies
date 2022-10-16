@@ -33,40 +33,40 @@
 #'
 #' @inheritParams .shared-parameters
 #'
-#' @return `NULL` or `secure_only` as a logical.
+#' @return `NULL` or `TRUE`.
 #' @keywords internal
 .validate_secure_only <- function(secure_only) {
-  if (is.null(secure_only)) {
-    return(secure_only)
-  }
-
   if (length(secure_only) > 1) {
     cli::cli_abort("secure_only must be a length-1 logical or NULL.")
   }
 
-  return(
-    vctrs::vec_cast(secure_only, logical())
-  )
+  secure_only <- vctrs::vec_cast(secure_only, logical())
+
+  if (isTRUE(secure_only)) {
+    return(secure_only)
+  } else {
+    return(NULL)
+  }
 }
 
 #' Ensure http_only is valid
 #'
 #' @inheritParams .shared-parameters
 #'
-#' @return `NULL` or `http_only` as a logical.
+#' @return `NULL` or `TRUE`.
 #' @keywords internal
 .validate_http_only <- function(http_only) {
-  if (is.null(http_only)) {
-    return(http_only)
-  }
-
   if (length(http_only) > 1) {
     cli::cli_abort("http_only must be a length-1 logical or NULL.")
   }
 
-  return(
-    vctrs::vec_cast(http_only, logical())
-  )
+  http_only <- vctrs::vec_cast(http_only, logical())
+
+  if (isTRUE(http_only)) {
+    return(http_only)
+  } else {
+    return(NULL)
+  }
 }
 
 #' Ensure same_site is valid

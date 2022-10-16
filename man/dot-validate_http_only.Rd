@@ -12,7 +12,7 @@ part of an HTTP request. When this is \code{FALSE} (default), the cookie is
 accessible to JavaScript via the \code{Document.cookie} property.}
 }
 \value{
-\code{NULL} or \code{http_only} as a logical.
+\code{NULL} or \code{TRUE}.
 }
 \description{
 Ensure http_only is valid

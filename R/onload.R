@@ -67,7 +67,7 @@ set_cookie_response <- function(cookie_name,
                                 domain = NULL,
                                 path = NULL,
                                 same_site = NULL,
-                                http_only = NULL,
+                                http_only = FALSE,
                                 ...) {
   header_string <- .http_cookie_string(
     cookie_name = cookie_name,

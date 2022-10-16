@@ -12,8 +12,12 @@
                                  path,
                                  same_site,
                                  http_only) {
+  secure_only <- .validate_secure_only(secure_only)
+  http_only <- .validate_http_only(http_only)
   same_site <- .validate_same_site(same_site, secure_only)
   expiration <- .validate_expiration(expiration)
+  domain <- .validate_domain(domain)
+  path <- .validate_path(path)
   attributes <- list(
     expiration = expiration,
     secure_only = secure_only,
@@ -23,6 +27,46 @@
     http_only = http_only
   )
   return(attributes)
+}
+
+#' Ensure secure_only is valid
+#'
+#' @inheritParams .shared-parameters
+#'
+#' @return `NULL` or `secure_only` as a logical.
+#' @keywords internal
+.validate_secure_only <- function(secure_only) {
+  if (is.null(secure_only)) {
+    return(secure_only)
+  }
+
+  if (length(secure_only) > 1) {
+    cli::cli_abort("secure_only must be a length-1 logical or NULL.")
+  }
+
+  return(
+    vctrs::vec_cast(secure_only, logical())
+  )
+}
+
+#' Ensure http_only is valid
+#'
+#' @inheritParams .shared-parameters
+#'
+#' @return `NULL` or `http_only` as a logical.
+#' @keywords internal
+.validate_http_only <- function(http_only) {
+  if (is.null(http_only)) {
+    return(http_only)
+  }
+
+  if (length(http_only) > 1) {
+    cli::cli_abort("http_only must be a length-1 logical or NULL.")
+  }
+
+  return(
+    vctrs::vec_cast(http_only, logical())
+  )
 }
 
 #' Ensure same_site is valid
@@ -72,6 +116,46 @@
 
   return(
     vctrs::vec_cast(expiration, double())
+  )
+}
+
+#' Ensure domain is valid
+#'
+#' @inheritParams .shared-parameters
+#'
+#' @return `NULL` or `domain` as a character.
+#' @keywords internal
+.validate_domain <- function(domain) {
+  if (is.null(domain)) {
+    return(domain)
+  }
+
+  if (length(domain) > 1) {
+    cli::cli_abort("domain must be a length-1 character or NULL.")
+  }
+
+  return(
+    vctrs::vec_cast(domain, character())
+  )
+}
+
+#' Ensure path is valid
+#'
+#' @inheritParams .shared-parameters
+#'
+#' @return `NULL` or `path` as a character.
+#' @keywords internal
+.validate_path <- function(path) {
+  if (is.null(path)) {
+    return(path)
+  }
+
+  if (length(path) > 1) {
+    cli::cli_abort("path must be a length-1 character or NULL.")
+  }
+
+  return(
+    vctrs::vec_cast(path, character())
   )
 }
 

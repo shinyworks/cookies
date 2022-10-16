@@ -1,9 +1,5 @@
 # set_cookie_on_load returns the expected tagList.
 
-    expiration must be a length-1 double or NULL.
-
----
-
     Code
       set_cookie_on_load(cookie_name = "name_of_cookie", cookie_value = "contents of the cookie")
     Output
@@ -16,6 +12,26 @@
         expiration = 27)
     Output
       <script>Cookies.set("name_of_cookie", "contents of the cookie", {"expires":27});</script>
+
+# Bad attributes throw errors.
+
+    expiration must be a length-1 double or NULL.
+
+---
+
+    secure_only must be a length-1 logical or NULL.
+
+---
+
+    http_only must be a length-1 logical or NULL.
+
+---
+
+    domain must be a length-1 character or NULL.
+
+---
+
+    path must be a length-1 character or NULL.
 
 # set_cookie_response works as expected.
 

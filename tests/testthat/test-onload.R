@@ -1,12 +1,4 @@
 test_that("set_cookie_on_load returns the expected tagList.", {
-  expect_snapshot_error(
-    set_cookie_on_load(
-      cookie_name = "name_of_cookie",
-      cookie_value = "contents of the cookie",
-      expiration = 1:3
-    )
-  )
-
   expect_snapshot(
     set_cookie_on_load(
       cookie_name = "name_of_cookie",
@@ -18,6 +10,48 @@ test_that("set_cookie_on_load returns the expected tagList.", {
       cookie_name = "name_of_cookie",
       cookie_value = "contents of the cookie",
       expiration = 27
+    )
+  )
+})
+
+test_that("Bad attributes throw errors.", {
+  expect_snapshot_error(
+    set_cookie_on_load(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      expiration = 1:3
+    )
+  )
+
+  expect_snapshot_error(
+    set_cookie_on_load(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      secure_only = 1:3
+    )
+  )
+
+  expect_snapshot_error(
+    set_cookie_response(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      http_only = 1:3
+    )
+  )
+
+  expect_snapshot_error(
+    set_cookie_on_load(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      domain = 1:3
+    )
+  )
+
+  expect_snapshot_error(
+    set_cookie_on_load(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      path = 1:3
     )
   )
 })

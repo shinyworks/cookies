@@ -2,12 +2,12 @@
 % Please edit documentation in R/ui_wrapper.R
 \name{add_cookie_handlers}
 \alias{add_cookie_handlers}
-\title{Add Cookies to an Existing Shiny UI}
+\title{Add cookies to an existing shiny ui}
 \usage{
 add_cookie_handlers(ui)
 }
 \arguments{
-\item{ui}{A 0- or 1-argument function defining the UI of a Shiny app, or a
+\item{ui}{A 0- or 1-argument function defining the ui of a shiny app, or a
 \code{\link[shiny:reexports]{shiny::tagList()}}.}
 }
 \value{
@@ -15,7 +15,7 @@ A function that takes a request and a \code{\link[shiny:reexports]{shiny::tagLis
 includes the dependencies needed to handle cookies.
 }
 \description{
-Wrap a Shiny ui in this function in order to add cookie-handling
+Wrap a shiny ui in this function in order to add cookie-handling
 functionality.
 }
 \examples{

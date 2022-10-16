@@ -2,14 +2,14 @@
 % Please edit documentation in R/server.R
 \name{remove_cookie}
 \alias{remove_cookie}
-\title{Remove a Cookie}
+\title{Remove a cookie}
 \usage{
-remove_cookie(name, session = shiny::getDefaultReactiveDomain())
+remove_cookie(cookie_name, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{name}{The name of the cookie. Can contain any US-ASCII characters
-except for: the control character, space, a tab, or separator characters
-like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+\item{cookie_name}{The name of the cookie. Can contain any US-ASCII
+characters except for: the control character, space, a tab, or separator
+characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 
 \item{session}{Session from which to make a child scope (the default should
 almost always be used).}

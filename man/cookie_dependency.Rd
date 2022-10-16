@@ -2,17 +2,17 @@
 % Please edit documentation in R/ui_wrapper.R
 \name{cookie_dependency}
 \alias{cookie_dependency}
-\title{Attach the js-cookie Javascript Library for Shiny}
+\title{Attach the js-cookie javascript library for shiny}
 \usage{
 cookie_dependency()
 }
 \value{
-An \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}, which Shiny uses to add the
+An \code{\link[htmltools:htmlDependency]{htmltools::htmlDependency()}}, which shiny uses to add the
 js-cookie Javascript library exactly once.
 }
 \description{
 Add the js-cookie Javascript library as an HTML dependency, and make cookies
-available in the Shiny input object.
+available in the shiny input object.
 }
 \examples{
 cookie_dependency()

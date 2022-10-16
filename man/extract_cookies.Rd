@@ -2,7 +2,7 @@
 % Please edit documentation in R/requests.R
 \name{extract_cookies}
 \alias{extract_cookies}
-\title{Extract All Cookies from a Shiny Request}
+\title{Extract all cookies from a shiny request}
 \usage{
 extract_cookies(request)
 }
@@ -13,7 +13,7 @@ extract_cookies(request)
 All cookies in the request, as a list.
 }
 \description{
-The Shiny request object includes any cookies that are available to the app.
+The shiny request object includes any cookies that are available to the app.
 This function extracts those cookies as a named list.
 }
 \examples{

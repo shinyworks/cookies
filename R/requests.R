@@ -48,9 +48,8 @@ extract_cookies <- function(request) {
   pairs <- strsplit(cookies, "; ", fixed = TRUE)[[1]]
   pairs <- pairs[pairs != ""]
   pairs <- strsplit(pairs, "=", fixed = TRUE)
-  keys <- vapply(pairs, function(x) x[1], FUN.VALUE = character(1))
-  values <- vapply(pairs, function(x) x[2], FUN.VALUE = character(1))
-  values[is.na(values)] <- ""
+  keys <- purrr::map_chr(pairs, 1)
+  values <- purrr::map_chr(pairs, 2, .default = "")
   keys <- gsub("+", " ", keys, fixed = TRUE)
   values <- gsub("+", " ", values, fixed = TRUE)
   keys <- httpuv::decodeURIComponent(keys)

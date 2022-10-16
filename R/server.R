@@ -14,10 +14,7 @@ set_cookie <- function(cookie_name,
                        path = NULL,
                        same_site = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
-  # This sets via javascript. When we add HttpOnly handling, this should either
-  # deal with that or error if they try to do http_only.
-
-  attributes <- .validate_attributes(
+  attributes <- .javascript_attributes(
     expiration = expiration,
     secure_only = secure_only,
     domain = domain,

@@ -4,6 +4,13 @@
 \alias{.shared-parameters}
 \title{Parameters used in multiple functions}
 \arguments{
+\item{attributes}{A list with values for \code{expiration}, \code{secure_only},
+\code{domain}, \code{path}, \code{same_site}, and \code{http_only}}
+
+\item{cookie_name}{The name of the cookie. Can contain any US-ASCII
+characters except for: the control character, space, a tab, or separator
+characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+
 \item{cookie_value}{The contents of the cookie as a single character value.}
 
 \item{domain}{The host to which the cookie will be sent (including
@@ -12,9 +19,9 @@ the host of the page where this cookie was set (not including subdomains).}
 
 \item{expiration}{Days after which the cookie should expire.}
 
-\item{cookie_name}{The name of the cookie. Can contain any US-ASCII
-characters except for: the control character, space, a tab, or separator
-characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+\item{http_only}{Logical indicating whether the cookie should only be sent as
+part of an HTTP request. When this is \code{FALSE} (default), the cookie is
+accessible to JavaScript via the \code{Document.cookie} property.}
 
 \item{path}{The path that must exist in the requested URL for the browser to
 send this cookie. Includes subdirectories.}
@@ -30,6 +37,7 @@ accessible via secure (\verb{https:}) requests (except on localhost).}
 \code{\link[shiny:reexports]{shiny::tagList()}}.}
 }
 \description{
-Parameters used in multiple functions
+These are parameters that are likely to show up in multiple functions, so I
+gather their definitions in one easy-to-find place.
 }
 \keyword{internal}

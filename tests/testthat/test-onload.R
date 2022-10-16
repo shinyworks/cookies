@@ -89,4 +89,23 @@ test_that("set_cookie_response works as expected.", {
       expiration = NULL
     )
   )
+  expect_snapshot(
+    set_cookie_response(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      http_only = TRUE,
+      expiration = NULL,
+      redirect = "/"
+    )
+  )
+  expect_snapshot(
+    set_cookie_response(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      http_only = TRUE,
+      expiration = NULL,
+      redirect = "/",
+      status = 200L
+    )
+  )
 })

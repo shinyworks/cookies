@@ -50,6 +50,10 @@ set_cookie_on_load <- function(cookie_name,
 #' that this does *not* return a full shiny ui.
 #'
 #' @inheritParams .shared-parameters
+#' @param redirect A relative or absolute URL where the user should be sent
+#'   next. A typical case would be the same URL minus the query parameter that
+#'   triggered the Set-cookie response.
+#' @inheritParams shiny::httpResponse
 #' @param ... Additional parameters passed on to [shiny::httpResponse()].
 #'
 #' @return A [shiny::httpResponse()] that sets the cookie.
@@ -60,6 +64,9 @@ set_cookie_on_load <- function(cookie_name,
 #' set_cookie_response(
 #'   "my_cookie", "contents of my cookie", content = "Your cookie is set."
 #' )
+#' set_cookie_response(
+#'   "my_cookie", "contents of my cookie", redirect = "/"
+#' )
 set_cookie_response <- function(cookie_name,
                                 cookie_value,
                                 expiration = 90,
@@ -68,22 +75,49 @@ set_cookie_response <- function(cookie_name,
                                 path = NULL,
                                 same_site = NULL,
                                 http_only = FALSE,
+                                redirect = NULL,
                                 ...) {
-  header_string <- .http_cookie_string(
-    cookie_name = cookie_name,
-    cookie_value = cookie_value,
-    expiration = expiration,
-    secure_only = secure_only,
-    domain = domain,
-    path = path,
-    same_site = same_site,
-    http_only = http_only
+  headers <- list(
+    .http_cookie_string(
+      cookie_name = cookie_name,
+      cookie_value = cookie_value,
+      expiration = expiration,
+      secure_only = secure_only,
+      domain = domain,
+      path = path,
+      same_site = same_site,
+      http_only = http_only
+    )
   )
 
+  dots <- rlang::list2(...)
+
+  status <- dots$status %||% 200L
+
+  if (!is.null(redirect)) {
+    headers <- c(
+      headers,
+      glue::glue("Location: {redirect}")
+    )
+    status <- dots$status %||% 307L
+
+    if (floor(status/100) != 3) {
+      cli::cli_warn(
+        c(
+          "Unexpected status code.",
+          x = "Status code {status} provided, expected 300 to 399."
+        )
+      )
+    }
+  }
+
+  dots$status <- status
+
   return(
-    shiny::httpResponse(
-      headers = header_string,
-      ...
+    rlang::exec(
+      shiny::httpResponse,
+      headers = headers,
+      !!!dots
     )
   )
 }

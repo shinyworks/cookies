@@ -78,7 +78,7 @@ set_cookie_response <- function(cookie_name,
                                 redirect = NULL,
                                 ...) {
   headers <- list(
-    .http_cookie_string(
+    `Set-cookie` = .http_cookie_string(
       cookie_name = cookie_name,
       cookie_value = cookie_value,
       expiration = expiration,
@@ -97,9 +97,9 @@ set_cookie_response <- function(cookie_name,
   if (!is.null(redirect)) {
     headers <- c(
       headers,
-      glue::glue("Location: {redirect}")
+      Location = redirect
     )
-    status <- dots$status %||% 307L
+    status <- dots$status %||% 302L
 
     if (floor(status/100) != 3) {
       cli::cli_warn(

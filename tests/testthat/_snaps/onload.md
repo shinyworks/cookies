@@ -49,8 +49,8 @@
       [1] ""
       
       $headers
-      $headers[[1]]
-      Set-cookie: name_of_cookie=contents%20of%20the%20cookie
+      $headers$`Set-cookie`
+      name_of_cookie=contents%20of%20the%20cookie
       
       $headers$`X-UA-Compatible`
       [1] "IE=edge,chrome=1"
@@ -75,8 +75,8 @@
       [1] ""
       
       $headers
-      $headers[[1]]
-      Set-cookie: name_of_cookie=contents%20of%20the%20cookie; HttpOnly
+      $headers$`Set-cookie`
+      name_of_cookie=contents%20of%20the%20cookie; HttpOnly
       
       $headers$`X-UA-Compatible`
       [1] "IE=edge,chrome=1"
@@ -92,7 +92,7 @@
         http_only = TRUE, expiration = NULL, redirect = "/")
     Output
       $status
-      [1] 307
+      [1] 302
       
       $content_type
       [1] "text/html; charset=UTF-8"
@@ -101,11 +101,11 @@
       [1] ""
       
       $headers
-      $headers[[1]]
-      Set-cookie: name_of_cookie=contents%20of%20the%20cookie; HttpOnly
+      $headers$`Set-cookie`
+      name_of_cookie=contents%20of%20the%20cookie; HttpOnly
       
-      $headers[[2]]
-      [1] "Location: /"
+      $headers$Location
+      [1] "/"
       
       $headers$`X-UA-Compatible`
       [1] "IE=edge,chrome=1"
@@ -133,11 +133,11 @@
       [1] ""
       
       $headers
-      $headers[[1]]
-      Set-cookie: name_of_cookie=contents%20of%20the%20cookie; HttpOnly
+      $headers$`Set-cookie`
+      name_of_cookie=contents%20of%20the%20cookie; HttpOnly
       
-      $headers[[2]]
-      [1] "Location: /"
+      $headers$Location
+      [1] "/"
       
       $headers$`X-UA-Compatible`
       [1] "IE=edge,chrome=1"

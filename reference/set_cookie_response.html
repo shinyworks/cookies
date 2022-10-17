@@ -12,7 +12,7 @@ that this does not return a full shiny ui."><meta property="og:image" content="h
     
     <a class="navbar-brand me-2" href="../index.html">cookies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,6 +63,7 @@ that this does <em>not</em> return a full shiny ui.</p>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  same_site <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  http_only <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  redirect <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -111,6 +112,12 @@ part of an HTTP request. When this is <code>FALSE</code> (default), the cookie i
 accessible to JavaScript via the <code>Document.cookie</code> property.</p></dd>
 
 
+<dt>redirect</dt>
+<dd><p>A relative or absolute URL where the user should be sent
+next. A typical case would be the same URL minus the query parameter that
+triggered the Set-cookie response.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional parameters passed on to <code><a href="https://rdrr.io/pkg/shiny/man/httpResponse.html" class="external-link">shiny::httpResponse()</a></code>.</p></dd>
 
@@ -135,8 +142,8 @@ accessible to JavaScript via the <code>Document.cookie</code> property.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $headers[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Set-cookie: my_cookie=contents%20of%20my%20cookie; Expires=Sat, 14 Jan 2023 17:44:35 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 15 Jan 2023 12:00:00 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
@@ -155,8 +162,8 @@ accessible to JavaScript via the <code>Document.cookie</code> property.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $headers[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Set-cookie: my_cookie=contents%20of%20my%20cookie; Expires=Wed, 26 Oct 2022 17:44:35 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Thu, 27 Oct 2022 12:00:00 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
@@ -177,8 +184,33 @@ accessible to JavaScript via the <code>Document.cookie</code> property.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Your cookie is set."</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $headers[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Set-cookie: my_cookie=contents%20of%20my%20cookie; Expires=Sat, 14 Jan 2023 17:44:35 GMT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 15 Jan 2023 12:00:00 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "httpResponse"</span>
+<span class="r-in"><span><span class="fu">set_cookie_response</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"my_cookie"</span>, <span class="st">"contents of my cookie"</span>, redirect <span class="op">=</span> <span class="st">"/"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $status</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/html; charset=UTF-8"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $content</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 15 Jan 2023 12:00:00 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $headers$Location</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>

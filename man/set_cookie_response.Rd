@@ -13,6 +13,7 @@ set_cookie_response(
   path = NULL,
   same_site = NULL,
   http_only = FALSE,
+  redirect = NULL,
   ...
 )
 }
@@ -43,6 +44,10 @@ the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} mu
 part of an HTTP request. When this is \code{FALSE} (default), the cookie is
 accessible to JavaScript via the \code{Document.cookie} property.}
 
+\item{redirect}{A relative or absolute URL where the user should be sent
+next. A typical case would be the same URL minus the query parameter that
+triggered the Set-cookie response.}
+
 \item{...}{Additional parameters passed on to \code{\link[shiny:httpResponse]{shiny::httpResponse()}}.}
 }
 \value{
@@ -57,5 +62,8 @@ set_cookie_response("my_cookie", "contents of my cookie")
 set_cookie_response("my_cookie", "contents of my cookie", expiration = 10)
 set_cookie_response(
   "my_cookie", "contents of my cookie", content = "Your cookie is set."
+)
+set_cookie_response(
+  "my_cookie", "contents of my cookie", redirect = "/"
 )
 }

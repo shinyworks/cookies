@@ -249,7 +249,7 @@
                                 http_only) {
   cookie_name <- utils::URLencode(cookie_name, reserved = TRUE)
   cookie_value <- utils::URLencode(cookie_value, reserved = TRUE)
-  main_string <- glue::glue("Set-cookie: {cookie_name}={cookie_value}")
+  main_string <- glue::glue("{cookie_name}={cookie_value}")
   attributes_string <- .attributes_string(
     expiration = expiration,
     secure_only = secure_only,

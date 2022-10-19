@@ -17,7 +17,8 @@ characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 subdomains). If this is \code{NULL} (default) the cookie will only be sent to
 the host of the page where this cookie was set (not including subdomains).}
 
-\item{expiration}{Days after which the cookie should expire.}
+\item{expiration}{Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.}
 
 \item{http_only}{Logical indicating whether the cookie should only be sent as
 part of an HTTP request. When this is \code{FALSE} (default), the cookie is

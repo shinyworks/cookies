@@ -12,7 +12,8 @@
 #' @param domain The host to which the cookie will be sent (including
 #'   subdomains). If this is `NULL` (default) the cookie will only be sent to
 #'   the host of the page where this cookie was set (not including subdomains).
-#' @param expiration Days after which the cookie should expire.
+#' @param expiration Days after which the cookie should expire. To remove an
+#'   HttpOnly cookie, send a negative value for this attribute.
 #' @param http_only Logical indicating whether the cookie should only be sent as
 #'   part of an HTTP request. When this is `FALSE` (default), the cookie is
 #'   accessible to JavaScript via the `Document.cookie` property.

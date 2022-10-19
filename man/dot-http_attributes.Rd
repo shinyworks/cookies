@@ -7,7 +7,8 @@
 .http_attributes(expiration, secure_only, domain, path, same_site, http_only)
 }
 \arguments{
-\item{expiration}{Days after which the cookie should expire.}
+\item{expiration}{Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.}
 
 \item{secure_only}{Logical indicating whether the cookie should only be
 accessible via secure (\verb{https:}) requests (except on localhost).}

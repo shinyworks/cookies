@@ -21,7 +21,8 @@ characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 
 \item{cookie_value}{The contents of the cookie as a single character value.}
 
-\item{expiration}{Days after which the cookie should expire.}
+\item{expiration}{Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.}
 
 \item{secure_only}{Logical indicating whether the cookie should only be
 accessible via secure (\verb{https:}) requests (except on localhost).}

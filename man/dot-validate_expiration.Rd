@@ -7,7 +7,8 @@
 .validate_expiration(expiration)
 }
 \arguments{
-\item{expiration}{Days after which the cookie should expire.}
+\item{expiration}{Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.}
 }
 \value{
 \code{NULL} or the expiration as a double.

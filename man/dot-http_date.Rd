@@ -7,7 +7,8 @@
 .http_date(expiration)
 }
 \arguments{
-\item{expiration}{Days after which the cookie should expire.}
+\item{expiration}{Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.}
 }
 \value{
 A string of the date in the required format.

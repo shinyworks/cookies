@@ -12,7 +12,7 @@ that this does not return a full shiny ui."><meta property="og:image" content="h
     
     <a class="navbar-brand me-2" href="../index.html">cookies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9005</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9006</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,8 @@ characters like ( ) &lt; &gt; @ , ; : \ " / [ ] ? = { }.</p></dd>
 
 
 <dt>expiration</dt>
-<dd><p>Days after which the cookie should expire.</p></dd>
+<dd><p>Days after which the cookie should expire. To remove an
+HttpOnly cookie, send a negative value for this attribute.</p></dd>
 
 
 <dt>secure_only</dt>
@@ -143,7 +144,7 @@ triggered the Set-cookie response.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:18:09 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:25:49 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
@@ -163,7 +164,7 @@ triggered the Set-cookie response.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Sat, 29 Oct 2022 02:18:09 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Sat, 29 Oct 2022 02:25:49 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
@@ -185,7 +186,7 @@ triggered the Set-cookie response.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:18:09 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:25:49 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`X-UA-Compatible`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "IE=edge,chrome=1"</span>
@@ -207,7 +208,7 @@ triggered the Set-cookie response.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$`Set-cookie`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:18:09 GMT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 17 Jan 2023 02:25:49 GMT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $headers$Location</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/"</span>

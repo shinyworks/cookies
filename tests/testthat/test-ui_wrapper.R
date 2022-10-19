@@ -27,3 +27,13 @@ test_that("add_cookie_handlers adds js to shiny-like things.", {
   expect_snapshot(test_result[[1]])
   expect_snapshot(test_result[[2]])
 })
+
+test_that("add_cookie_handlers doesn't break httpResponses.", {
+  basic_response <- shiny::httpResponse()
+  test_fn <- add_cookie_handlers(basic_response)
+  test_result <- test_fn(list())
+  expect_identical(
+    test_result,
+    basic_response
+  )
+})

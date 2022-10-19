@@ -44,6 +44,10 @@ add_cookie_handlers <- function(ui) {
           ui <- ui()
         }
       }
+      # If ui is an httpResponse, wrapping it in a tagList will break things.
+      if (inherits(ui, "httpResponse")) {
+        return(ui)
+      }
       return(
         shiny::tagList(
           cookie_dependency(),

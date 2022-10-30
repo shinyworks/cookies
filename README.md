@@ -24,8 +24,7 @@ easy as possible to use cookies in shiny apps.
 Install the released version of {cookies} from CRAN:
 
 ``` r
-# Not quite yet.
-# install.packages("cookies")
+install.packages("cookies")
 ```
 
 Or install the development version of {cookies} from

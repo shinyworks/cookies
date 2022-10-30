@@ -31,7 +31,8 @@ The goal of {cookies} it to make it as easy as possible to use cookies in shiny 
 Install the released version of {cookies} from CRAN:
 
 ``` r
-install.packages("cookies")
+# Not quite yet.
+# install.packages("cookies")
 ```
 
 Or install the development version of {cookies} from [GitHub](https://github.com/) with:

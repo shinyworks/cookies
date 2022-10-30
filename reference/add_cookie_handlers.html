@@ -12,7 +12,7 @@ functionality."><meta property="og:image" content="https://r4ds.github.io/cookie
     
     <a class="navbar-brand me-2" href="../index.html">cookies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9006</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,14 +68,31 @@ functionality.</p>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A function that takes a request and a <code><a href="https://rdrr.io/pkg/shiny/man/reexports.html" class="external-link">shiny::tagList()</a></code> that
-includes the dependencies needed to handle cookies.</p>
+<p>An object with the same signature as the input <code>ui</code>, but with the
+dependencies needed to handle cookies. If <code>ui</code> is a <code><a href="https://rdrr.io/pkg/shiny/man/reexports.html" class="external-link">shiny::tagList()</a></code>, a
+<code><a href="https://rdrr.io/pkg/shiny/man/reexports.html" class="external-link">shiny::tagList()</a></code> will be returned; if <code>ui</code> is a function, a function will
+be returned.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu">add_cookie_handlers</span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function (request)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ name      : chr "shinycookie"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ version   : chr "1.0.0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ src       :List of 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ file: chr "js"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ meta      : NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ script    : chr [1:2] "js.cookie.js" "cookie_input.js"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ stylesheet: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ head      : NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ attachment: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ package   : chr "cookies"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ all_files : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "html_dependency"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ : chr "example"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr [1:2] "shiny.tag.list" "list"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

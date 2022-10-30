@@ -1,8 +1,8 @@
-pandoc: 2.14.2
+pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-10-19T02:25Z
+last_built: 2022-10-30T02:03Z
 urls:
   reference: https://r4ds.github.io/cookies/reference
   article: https://r4ds.github.io/cookies/articles

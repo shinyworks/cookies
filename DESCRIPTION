@@ -1,20 +1,18 @@
 Package: cookies
 Title: Use Browser Cookies with Shiny
-Version: 0.0.0.9006
+Version: 0.1.0
 Authors@R: c(
-    person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-4781-4346")),
+    person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre", 
+           "cph"), comment = c(ORCID = "0000-0003-4781-4346")),
     person("Klaus", "Hartl", 
-           role = c("cph"), comment = "js-cookie"),
+           role = c("cph"), comment = "js-cookie JavaScript library"),
     person("Fagner", "Brack",
-           role = c("cph"), comment = "js-cookie"),
-    person("John", "Coene",
-           role = "cph", comment = "JavaScript for R chapter on cookies")
+           role = c("cph"), comment = "js-cookie JavaScript library")
     )
-Description: Cookies are name-value pairs that are saved in your browser by a 
-    website. Cookies allow websites to persist information about the user and
-    their use of the website. This package provides tools for working with 
-    cookies in shiny apps.
+Description: Browser cookies are name-value pairs that are saved in a user's 
+    browser by a website. Cookies allow websites to persist information about 
+    the user and their use of the website. Here we provide tools for working 
+    with cookies in shiny apps.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -36,6 +34,6 @@ Imports:
     jsonlite,
     purrr,
     rlang,
-    shiny,
+    shiny (>= 1.6.0),
     stats,
     vctrs

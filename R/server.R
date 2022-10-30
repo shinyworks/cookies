@@ -5,7 +5,19 @@
 #' @inheritParams .shared-parameters
 #' @inheritParams shiny::moduleServer
 #'
+#' @return A call to `session$sendCustomMessage()` which sets the targeted
+#'   cookie.
 #' @export
+#' @examples
+#' server <- function(input, output, server) {
+#'   shiny::observeEvent(
+#'     input$button_that_sets_cookie,
+#'     set_cookie(
+#'       "my_cookie",
+#'       "the value of this cookie"
+#'     )
+#'   )
+#' }
 set_cookie <- function(cookie_name,
                        cookie_value,
                        expiration = 90,
@@ -39,7 +51,16 @@ set_cookie <- function(cookie_name,
 #' @inheritParams .shared-parameters
 #' @inheritParams shiny::moduleServer
 #'
+#' @return A call to `session$sendCustomMessage()` which removes the targeted
+#'   cookie.
 #' @export
+#' @examples
+#' server <- function(input, output, server) {
+#'   shiny::observeEvent(
+#'     input$button_that_removes_cookie,
+#'     remove_cookie("my_cookie")
+#'   )
+#' }
 remove_cookie <- function(cookie_name,
                           session = shiny::getDefaultReactiveDomain()) {
   session$sendCustomMessage(

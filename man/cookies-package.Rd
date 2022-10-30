@@ -6,7 +6,7 @@
 \alias{cookies-package}
 \title{cookies: Use Browser Cookies with Shiny}
 \description{
-Cookies are name-value pairs that are saved in your browser by a website. Cookies allow websites to persist information about the user and their use of the website. This package provides tools for working with cookies in shiny apps.
+Browser cookies are name-value pairs that are saved in a user's browser by a website. Cookies allow websites to persist information about the user and their use of the website. Here we provide tools for working with cookies in shiny apps.
 }
 \seealso{
 Useful links:
@@ -18,13 +18,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Jon Harmon \email{jonthegeek@gmail.com} (\href{https://orcid.org/0000-0003-4781-4346}{ORCID})
+\strong{Maintainer}: Jon Harmon \email{jonthegeek@gmail.com} (\href{https://orcid.org/0000-0003-4781-4346}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{
-  \item Klaus Hartl (js-cookie) [copyright holder]
-  \item Fagner Brack (js-cookie) [copyright holder]
-  \item John Coene (JavaScript for R chapter on cookies) [copyright holder]
+  \item Klaus Hartl (js-cookie JavaScript library) [copyright holder]
+  \item Fagner Brack (js-cookie JavaScript library) [copyright holder]
 }
 
 }

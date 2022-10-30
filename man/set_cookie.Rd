@@ -42,6 +42,21 @@ the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} mu
 \item{session}{Session from which to make a child scope (the default should
 almost always be used).}
 }
+\value{
+A call to \code{session$sendCustomMessage()} which sets the targeted
+cookie.
+}
 \description{
 Instruct the user's browser to create a cookie via JavaScript.
+}
+\examples{
+server <- function(input, output, server) {
+  shiny::observeEvent(
+    input$button_that_sets_cookie,
+    set_cookie(
+      "my_cookie",
+      "the value of this cookie"
+    )
+  )
+}
 }

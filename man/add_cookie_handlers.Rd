@@ -11,8 +11,10 @@ add_cookie_handlers(ui)
 \code{\link[shiny:reexports]{shiny::tagList()}}.}
 }
 \value{
-A function that takes a request and a \code{\link[shiny:reexports]{shiny::tagList()}} that
-includes the dependencies needed to handle cookies.
+An object with the same signature as the input \code{ui}, but with the
+dependencies needed to handle cookies. If \code{ui} is a \code{\link[shiny:reexports]{shiny::tagList()}}, a
+\code{\link[shiny:reexports]{shiny::tagList()}} will be returned; if \code{ui} is a function, a function will
+be returned.
 }
 \description{
 Wrap a shiny ui in this function in order to add cookie-handling

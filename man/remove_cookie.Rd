@@ -14,6 +14,18 @@ characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 \item{session}{Session from which to make a child scope (the default should
 almost always be used).}
 }
+\value{
+A call to \code{session$sendCustomMessage()} which removes the targeted
+cookie.
+}
 \description{
 Instruct the user's browser to remove a cookie via JavaScript.
+}
+\examples{
+server <- function(input, output, server) {
+  shiny::observeEvent(
+    input$button_that_removes_cookie,
+    remove_cookie("my_cookie")
+  )
+}
 }

@@ -26,34 +26,54 @@ cookie_dependency <- function() {
 #' functionality.
 #'
 #' @inheritParams .shared-parameters
-#' @return A function that takes a request and a [shiny::tagList()] that
-#'   includes the dependencies needed to handle cookies.
+#' @return An object with the same signature as the input `ui`, but with the
+#'   dependencies needed to handle cookies. If `ui` is a [shiny::tagList()], a
+#'   [shiny::tagList()] will be returned; if `ui` is a function, a function will
+#'   be returned.
 #' @export
 #' @examples
 #' str(add_cookie_handlers("example"))
 add_cookie_handlers <- function(ui) {
-  force(ui)
-  return(
-    function(request) {
-      # ui can be a tagList, a 0-argument function, or a 1-argument function.
-      # Deal with those.
-      if (is.function(ui)) {
-        if (length(formals(ui))) {
-          ui <- ui(request)
-        } else {
-          ui <- ui()
-        }
-      }
-      # If ui is an httpResponse, wrapping it in a tagList will break things.
-      if (inherits(ui, "httpResponse")) {
-        return(ui)
-      }
+  # The return needs to match the input.
+
+  # Case 1: Don't mess with httpResponse objects.
+  if (inherits(ui, "httpResponse")) {
+    return(ui)
+  }
+
+  # Case 2: Functions depend on whether they're request-handlers or something
+  # else.
+  if (is.function(ui)) {
+    force(ui)
+    if (length(formals(ui))) {
       return(
-        shiny::tagList(
-          cookie_dependency(),
-          ui
-        )
+        function(request) {
+          ui <- ui(request)
+          return(
+            shiny::tagList(
+              cookie_dependency(),
+              ui
+            )
+          )
+        }
+      )
+    } else {
+      return(
+        function() {
+          shiny::tagList(
+            cookie_dependency(),
+            ui()
+          )
+        }
       )
     }
+  }
+
+  # Case 3: Simple tagsList-style uis should remain simple.
+  return(
+    shiny::tagList(
+      cookie_dependency(),
+      ui
+    )
   )
 }

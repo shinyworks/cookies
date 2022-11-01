@@ -1,3 +1,7 @@
+# cookies 0.1.1
+
+* Updated a test. No user-facing changes.
+
 # cookies 0.0.1
 
 * Initial CRAN release.

@@ -1,8 +1,10 @@
+# cookies (development version)
+
 # cookies 0.1.1
 
 * Updated a test. No user-facing changes.
 
-# cookies 0.0.1
+# cookies 0.1.0
 
 * Initial CRAN release.
 * Added `set_cookie_response()` to set and remove cookies using more-secure HTTP responses (#10, #17, #21, #22).

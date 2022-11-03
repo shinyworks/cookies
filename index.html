@@ -98,105 +98,80 @@
 <div class="section level2">
 <h2 id="use-cases">Use Cases<a class="anchor" aria-label="anchor" href="#use-cases"></a>
 </h2>
-<p>Several potential use cases motivated the creation of this package. Here I present the key motivating example, to demonstrate how the package might be useful to you.</p>
+<p>Several potential use cases motivated the creation of this package.</p>
 <div class="section level3">
-<h3 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
+<h3 id="saving-settings">Saving Settings<a class="anchor" aria-label="anchor" href="#saving-settings"></a>
 </h3>
-<p>The primary motivating use case was authentication. You can see this use case in action in the <a href="https://github.com/r4ds/shinyslack" class="external-link">{shinyslack}</a> package (currently only available via GitHub).</p>
-<p>The general strategy is to save an encrypted version of the user’s token to a cookie. If the cookie exists and is valid, the user sees the site. If the cookie does not exist, the user is asked to log in. If the url has the authorization code (a step during oauth authentication), the code is exchanged for a token, and saved to a cookie.</p>
-<p>The switches between the states are facilitated by the <a href="https://github.com/r4ds/scenes" class="external-link">{scenes}</a> package (also currently only available via GitHub).</p>
-<p>Here I’ll demonstrate the case where the user has a cookie, and you wish to use their authentication information to change the display of your app.</p>
+<p>In general, cookies can be used to save some sort of setting about the user. This allows you to restore their state (or otherwise know something about that user) the next time they load your app.</p>
+<p>Here we’ll use a simple example to demonstrate this concept.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4ds/cookies" class="external-link">cookies</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Shiny UIs can be functions that take a request object as an argument. The</span></span>
-<span><span class="co"># request contains information about the user who is requesting to view the</span></span>
-<span><span class="co"># page, including any cookies they provide. Here we look for a cookie named</span></span>
-<span><span class="co"># "authenticated_name", but in a real use case this would likely be something</span></span>
-<span><span class="co"># more complex.</span></span>
-<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">request</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">user_name</span> <span class="op">&lt;-</span> <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/extract_cookie.html">extract_cookie</a></span><span class="op">(</span></span>
-<span>    <span class="va">request</span>, </span>
-<span>    cookie_name <span class="op">=</span> <span class="st">"authenticated_name"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># We check to see if their cookie is valid. In this toy example, their cookie</span></span>
-<span>  <span class="co"># is valid if the name is in a list of known users.</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">user_name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Priyanka"</span>, <span class="st">"Yoni"</span>, <span class="st">"Jon"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">main_ui</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">login_ui</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># The main_ui is served if they're authenticated.</span></span>
-<span><span class="va">main_ui</span> <span class="op">&lt;-</span> <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/add_cookie_handlers.html">add_cookie_handlers</a></span><span class="op">(</span></span>
+<span><span class="co"># Wrap your ui with add_cookie_handlers() to enable cookies.</span></span>
+<span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/add_cookie_handlers.html">add_cookie_handlers</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Our Real App"</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarLayout</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarPanel</a></span><span class="op">(</span></span>
-<span>        <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">p</a></span><span class="op">(</span><span class="st">"Inputs or whatnot"</span><span class="op">)</span></span>
-<span>      <span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">mainPanel</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textOutput.html" class="external-link">textOutput</a></span><span class="op">(</span><span class="st">"welcome"</span><span class="op">)</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/actionButton.html" class="external-link">actionButton</a></span><span class="op">(</span><span class="st">"unset"</span>, <span class="st">"Delete Cookie"</span><span class="op">)</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">p</a></span><span class="op">(</span><span class="st">"Click the button then refresh this page."</span><span class="op">)</span></span>
-<span>      <span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># Otherwise we serve the login_ui.</span></span>
-<span><span class="va">login_ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/add_cookie_handlers.html">add_cookie_handlers</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Login"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"A Simple App"</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html" class="external-link">textInput</a></span><span class="op">(</span><span class="st">"user_name"</span>, label <span class="op">=</span> <span class="st">"Type a valid name then refresh this page"</span><span class="op">)</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"number_selector"</span>,</span>
+<span>        label <span class="op">=</span> <span class="st">"Select a number. We'll remember it when you refresh."</span>,</span>
+<span>        min <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        max <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>        value <span class="op">=</span> <span class="fl">1</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"number_selector_raw"</span>,</span>
+<span>        label <span class="op">=</span> <span class="st">"This one isn't linked to a cookie, so we forget it on refresh."</span>,</span>
+<span>        min <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        max <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>        value <span class="op">=</span> <span class="fl">1</span></span>
+<span>      <span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Both uis share a common server function.</span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Since both UIs are wrapped with add_cookie_handlers, cookies are</span></span>
-<span>  <span class="co"># available in the input object.</span></span>
-<span>  <span class="va">output</span><span class="op">$</span><span class="va">welcome</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html" class="external-link">renderText</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/req.html" class="external-link">req</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">authenticated_name</span><span class="op">)</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">authenticated_name</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Welcome,"</span>, <span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">authenticated_name</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>  <span class="op">}</span><span class="op">)</span></span>
-<span>  </span>
+<span>  <span class="co"># When the value changes, set a cookie.</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
-<span>    <span class="va">input</span><span class="op">$</span><span class="va">unset</span>,</span>
-<span>    <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/remove_cookie.html">remove_cookie</a></span><span class="op">(</span><span class="st">"authenticated_name"</span><span class="op">)</span></span>
+<span>    <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span>,</span>
+<span>    <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
+<span>      cookie_name <span class="op">=</span> <span class="st">"selected_number"</span>,</span>
+<span>      cookie_value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span></span>
+<span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span>  </span>
-<span>  <span class="co"># This server also processes the input from login_ui.</span></span>
+<span>  <span class="co"># Initialize the slider from any cookies that come in at the start.</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
-<span>    <span class="va">input</span><span class="op">$</span><span class="va">user_name</span>,</span>
-<span>    <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
-<span>      cookie_name <span class="op">=</span> <span class="st">"authenticated_name"</span>,</span>
-<span>      cookie_value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">user_name</span></span>
-<span>    <span class="op">)</span></span>
+<span>    <span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">selected_number</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSliderInput.html" class="external-link">updateSliderInput</a></span><span class="op">(</span></span>
+<span>      inputId <span class="op">=</span> <span class="st">"number_selector"</span>,</span>
+<span>      value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">selected_number</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    once <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span></span>
 <span>  <span class="va">ui</span>,</span>
 <span>  <span class="va">server</span>,</span>
+<span>  <span class="co"># Cookies only work in an actual browser.</span></span>
 <span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    launch.browser <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>If you run that code, make selections, and refresh your browser, you should see that the first slider is remembered, while the second is not.</p>
 </div>
 <div class="section level3">
 <h3 id="other-use-cases">Other Use Cases<a class="anchor" aria-label="anchor" href="#other-use-cases"></a>
 </h3>
 <ul>
-<li>Save settings between visits. This can work similar to Shiny’s built-in bookmarking, but doesn’t require that the user save a URL to reflect the app state.</li>
-<li>Log a datestamp for the user’s visit, to, for example, notify users about new features since their last visit.</li>
+<li>
+<strong>Authentication:</strong> This was the motivating use case for this package. You can see a working example of how this can be implemented in <a href="https://github.com/r4ds/shinyslack" class="external-link">{shinyslack}</a>.</li>
+<li>
+<strong>Last visit:</strong> You could log a datestamp when the page loads (and transfer any existing value to another variable or another cookie) to, for example, notify users about new features since their last visit.</li>
+<li>
+<strong>Many others:</strong> If you have use case but you aren’t certain how to implement, please open an issue!</li>
 </ul>
 </div>
 </div>

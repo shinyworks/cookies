@@ -68,8 +68,22 @@ test_that("set_cookie works.", {
   )
 })
 
-test_that("remove_cookie works", {
+test_that("remove_cookie works.", {
   expect_snapshot(
     remove_cookie("testname", session = session)
+  )
+})
+
+test_that("get_cookie works.", {
+  session$input <- list()
+  session$request <- list(HTTP_COOKIE = "key=value")
+  expect_identical(
+    get_cookie("key", session = session),
+    "value"
+  )
+  session$input <- list(cookies = list(key = "value2"))
+  expect_identical(
+    get_cookie("key", session = session),
+    "value2"
   )
 })

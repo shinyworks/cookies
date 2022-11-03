@@ -62,9 +62,11 @@ that this does \emph{not} return a full shiny ui.
 set_cookie_response("my_cookie", "contents of my cookie")
 set_cookie_response("my_cookie", "contents of my cookie", expiration = 10)
 set_cookie_response(
-  "my_cookie", "contents of my cookie", content = "Your cookie is set."
+  "my_cookie", "contents of my cookie",
+  content = "Your cookie is set."
 )
 set_cookie_response(
-  "my_cookie", "contents of my cookie", redirect = "/"
+  "my_cookie", "contents of my cookie",
+  redirect = "/"
 )
 }

@@ -22,7 +22,7 @@
     Output
       {"name":["testname"],"value":["test contents"],"attributes":{"expires":[22],"secureOnly":[true],"domain":["this"],"path":["/docs/"],"sameSite":["None"]}} 
 
-# remove_cookie works
+# remove_cookie works.
 
     Code
       remove_cookie("testname", session = session)

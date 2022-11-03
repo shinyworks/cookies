@@ -68,3 +68,24 @@ remove_cookie <- function(cookie_name,
     list(name = cookie_name)
   )
 }
+
+#' Read a cookie
+#'
+#' Read a cookie from the input object.
+#'
+#' @inheritParams .shared-parameters
+#' @inheritParams shiny::moduleServer
+#'
+#' @return A character with the value of the cookie.
+#' @export
+#' @examples
+#' server <- function(input, output, session) {
+#'   get_cookie("my_cookie")
+#' }
+get_cookie <- function(cookie_name,
+                       session = shiny::getDefaultReactiveDomain()) {
+  # Once the cookies are initialized, use the input value.
+  session$input$cookies[[cookie_name]] %||%
+    # But when the app first loads, the cookies are only in the request object.
+    extract_cookie(session$request, cookie_name)
+}

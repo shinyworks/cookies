@@ -44,112 +44,79 @@ remotes::install_github("r4ds/cookies")
 ## Use Cases
 
 Several potential use cases motivated the creation of this package.
-Here I present the key motivating example, to demonstrate how the package might be useful to you.
 
-### Authentication
+### Saving Settings
 
-The primary motivating use case was authentication.
-You can see this use case in action in the [{shinyslack}](https://github.com/r4ds/shinyslack) package (currently only available via GitHub).
+In general, cookies can be used to save some sort of setting about the user.
+This allows you to restore their state (or otherwise know something about that user) the next time they load your app.
 
-The general strategy is to save an encrypted version of the user's token to a cookie.
-If the cookie exists and is valid, the user sees the site.
-If the cookie does not exist, the user is asked to log in.
-If the url has the authorization code (a step during oauth authentication), the code is exchanged for a token, and saved to a cookie.
+Here we'll use a simple example to demonstrate this concept.
 
-The switches between the states are facilitated by the [{scenes}](https://github.com/r4ds/scenes) package (also currently only available via GitHub).
-
-Here I'll demonstrate the case where the user has a cookie, and you wish to use their authentication information to change the display of your app.
-
-```{r user-info, eval = FALSE}
+```{r simple-app, eval = FALSE}
 library(cookies)
 library(shiny)
 
-# Shiny UIs can be functions that take a request object as an argument. The
-# request contains information about the user who is requesting to view the
-# page, including any cookies they provide. Here we look for a cookie named
-# "authenticated_name", but in a real use case this would likely be something
-# more complex.
-ui <- function(request) {
-  user_name <- cookies::extract_cookie(
-    request, 
-    cookie_name = "authenticated_name"
-  )
-
-  # We check to see if their cookie is valid. In this toy example, their cookie
-  # is valid if the name is in a list of known users.
-  if (user_name %in% c("Priyanka", "Yoni", "Jon")) {
-    return(main_ui)
-  } else {
-    return(login_ui)
-  }
-}
-
-# The main_ui is served if they're authenticated.
-main_ui <- cookies::add_cookie_handlers(
+# Wrap your ui with add_cookie_handlers() to enable cookies.
+ui <- add_cookie_handlers(
   fluidPage(
-    titlePanel("Our Real App"),
-    sidebarLayout(
-      sidebarPanel(
-        shiny::p("Inputs or whatnot")
-      ),
-      mainPanel(
-        textOutput("welcome"),
-        actionButton("unset", "Delete Cookie"),
-        p("Click the button then refresh this page.")
-      )
-    )
-  )
-) 
-
-# Otherwise we serve the login_ui.
-login_ui <- add_cookie_handlers(
-  fluidPage(
-    titlePanel("Login"),
+    titlePanel("A Simple App"),
     fluidRow(
-      textInput("user_name", label = "Type a valid name then refresh this page")
+      sliderInput(
+        "number_selector",
+        label = "Select a number. We'll remember it when you refresh.",
+        min = 1,
+        max = 10,
+        value = 1
+      ),
+      sliderInput(
+        "number_selector_raw",
+        label = "This one isn't linked to a cookie, so we forget it on refresh.",
+        min = 1,
+        max = 10,
+        value = 1
+      )
     )
   )
 )
 
-# Both uis share a common server function.
 server <- function(input, output, session) {
-  # Since both UIs are wrapped with add_cookie_handlers, cookies are
-  # available in the input object.
-  output$welcome <- renderText({
-    req(input$cookies$authenticated_name)
-    if (!is.null(input$cookies$authenticated_name)) {
-      paste("Welcome,", input$cookies$authenticated_name)
-    }
-  })
-  
+  # When the value changes, set a cookie.
   observeEvent(
-    input$unset,
-    cookies::remove_cookie("authenticated_name")
+    input$number_selector,
+    cookies::set_cookie(
+      cookie_name = "selected_number",
+      cookie_value = input$number_selector
+    )
   )
   
-  # This server also processes the input from login_ui.
+  # Initialize the slider from any cookies that come in at the start.
   observeEvent(
-    input$user_name,
-    cookies::set_cookie(
-      cookie_name = "authenticated_name",
-      cookie_value = input$user_name
-    )
+    input$cookies$selected_number,
+    updateSliderInput(
+      inputId = "number_selector",
+      value = input$cookies$selected_number
+    ),
+    once = TRUE
   )
 }
 
 shinyApp(
   ui,
   server,
+  # Cookies only work in an actual browser.
   options = list(
     launch.browser = TRUE
   )
 )
 ```
 
+If you run that code, make selections, and refresh your browser, you should see that the first slider is remembered, while the second is not.
+
 ### Other Use Cases
 
--   Save settings between visits. This can work similar to Shiny's built-in bookmarking, but doesn't require that the user save a URL to reflect the app state.
--   Log a datestamp for the user's visit, to, for example, notify users about new features since their last visit.
+-   **Authentication:** This was the motivating use case for this package. You can see a working example of how this can be implemented in [{shinyslack}](https://github.com/r4ds/shinyslack).
+-   **Last visit:** You could log a datestamp when the page loads (and transfer any existing value to another variable or another cookie) to, for example, notify users about new features since their last visit.
+-   **Many others:** If you have use case but you aren't certain how to implement, please open an issue!
 
 ## Code of Conduct
 

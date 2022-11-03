@@ -62,10 +62,12 @@ set_cookie_on_load <- function(cookie_name,
 #' set_cookie_response("my_cookie", "contents of my cookie")
 #' set_cookie_response("my_cookie", "contents of my cookie", expiration = 10)
 #' set_cookie_response(
-#'   "my_cookie", "contents of my cookie", content = "Your cookie is set."
+#'   "my_cookie", "contents of my cookie",
+#'   content = "Your cookie is set."
 #' )
 #' set_cookie_response(
-#'   "my_cookie", "contents of my cookie", redirect = "/"
+#'   "my_cookie", "contents of my cookie",
+#'   redirect = "/"
 #' )
 set_cookie_response <- function(cookie_name,
                                 cookie_value,
@@ -101,7 +103,7 @@ set_cookie_response <- function(cookie_name,
     )
     status <- dots$status %||% 302L
 
-    if (floor(status/100) != 3) {
+    if (floor(status / 100) != 3) {
       cli::cli_warn(
         c(
           "Unexpected status code.",

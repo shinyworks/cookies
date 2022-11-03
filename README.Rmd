@@ -63,14 +63,25 @@ ui <- add_cookie_handlers(
     fluidRow(
       sliderInput(
         "number_selector",
-        label = "Select a number. We'll remember it when you refresh.",
+        label = paste(
+          "Select a number.",
+          "This selector sets the cookie value.",
+          "It also initializes with the cookie value.",
+          "Refresh to see it remembered.",
+          sep = "\n"
+        ),
         min = 1,
         max = 10,
         value = 1
       ),
       sliderInput(
-        "number_selector_raw",
-        label = "This one isn't linked to a cookie, so we forget it on refresh.",
+        "number_selector_no_cookie",
+        label = paste(
+          "Select a number.",
+          "This one is not connected to the cookie.",
+          "When you refresh, it will always initialize to 1.",
+          sep = "\n"
+        ),
         min = 1,
         max = 10,
         value = 1
@@ -83,18 +94,20 @@ server <- function(input, output, session) {
   # When the value changes, set a cookie.
   observeEvent(
     input$number_selector,
-    cookies::set_cookie(
-      cookie_name = "selected_number",
-      cookie_value = input$number_selector
-    )
+    {
+      cookies::set_cookie(
+        cookie_name = "selected_number",
+        cookie_value = input$number_selector
+      )
+    }
   )
-  
-  # Initialize the slider from any cookies that come in at the start.
+
+  # Initialize the top slider from any cookies that come in at the start.
   observeEvent(
-    input$cookies$selected_number,
+    get_cookie("selected_number"),
     updateSliderInput(
       inputId = "number_selector",
-      value = input$cookies$selected_number
+      value = get_cookie("selected_number")
     ),
     once = TRUE
   )

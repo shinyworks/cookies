@@ -115,14 +115,25 @@
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
 <span>        <span class="st">"number_selector"</span>,</span>
-<span>        label <span class="op">=</span> <span class="st">"Select a number. We'll remember it when you refresh."</span>,</span>
+<span>        label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>          <span class="st">"Select a number."</span>,</span>
+<span>          <span class="st">"This selector sets the cookie value."</span>,</span>
+<span>          <span class="st">"It also initializes with the cookie value."</span>,</span>
+<span>          <span class="st">"Refresh to see it remembered."</span>,</span>
+<span>          sep <span class="op">=</span> <span class="st">"\n"</span></span>
+<span>        <span class="op">)</span>,</span>
 <span>        min <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>        max <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>        value <span class="op">=</span> <span class="fl">1</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
-<span>        <span class="st">"number_selector_raw"</span>,</span>
-<span>        label <span class="op">=</span> <span class="st">"This one isn't linked to a cookie, so we forget it on refresh."</span>,</span>
+<span>        <span class="st">"number_selector_no_cookie"</span>,</span>
+<span>        label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>          <span class="st">"Select a number."</span>,</span>
+<span>          <span class="st">"This one is not connected to the cookie."</span>,</span>
+<span>          <span class="st">"When you refresh, it will always initialize to 1."</span>,</span>
+<span>          sep <span class="op">=</span> <span class="st">"\n"</span></span>
+<span>        <span class="op">)</span>,</span>
 <span>        min <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>        max <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>        value <span class="op">=</span> <span class="fl">1</span></span>
@@ -135,18 +146,20 @@
 <span>  <span class="co"># When the value changes, set a cookie.</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
 <span>    <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span>,</span>
-<span>    <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
-<span>      cookie_name <span class="op">=</span> <span class="st">"selected_number"</span>,</span>
-<span>      cookie_value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span></span>
-<span>    <span class="op">)</span></span>
+<span>    <span class="op">{</span></span>
+<span>      <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
+<span>        cookie_name <span class="op">=</span> <span class="st">"selected_number"</span>,</span>
+<span>        cookie_value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
 <span>  <span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Initialize the slider from any cookies that come in at the start.</span></span>
+<span></span>
+<span>  <span class="co"># Initialize the top slider from any cookies that come in at the start.</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
-<span>    <span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">selected_number</span>,</span>
+<span>    <span class="fu"><a href="reference/get_cookie.html">get_cookie</a></span><span class="op">(</span><span class="st">"selected_number"</span><span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSliderInput.html" class="external-link">updateSliderInput</a></span><span class="op">(</span></span>
 <span>      inputId <span class="op">=</span> <span class="st">"number_selector"</span>,</span>
-<span>      value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">cookies</span><span class="op">$</span><span class="va">selected_number</span></span>
+<span>      value <span class="op">=</span> <span class="fu"><a href="reference/get_cookie.html">get_cookie</a></span><span class="op">(</span><span class="st">"selected_number"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    once <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span>

@@ -6,7 +6,7 @@
 #' @inheritParams extract_cookies
 #' @inheritParams .shared-parameters
 #' @param missing The value to return if the requested cookie is not stored in
-#' the request. Defaults to NULL.
+#' the request. Defaults to `NULL`.
 #'
 #' @return The contents of that cookie.
 #' @export

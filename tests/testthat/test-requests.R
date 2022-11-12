@@ -17,18 +17,30 @@ test_that("extract_cookie works", {
 
   expect_identical(
     extract_cookie(req_missing, "testcookie"),
+    NULL
+  )
+  expect_identical(
+    extract_cookie(req_missing, "testcookie", NA_character_),
     NA_character_
+  )
+  expect_identical(
+    extract_cookie(req_missing, "testcookie", "special default"),
+    "special default"
   )
   expect_identical(
     extract_cookie(req_empty, "testcookie"),
-    NA_character_
+    NULL
   )
   expect_identical(
     extract_cookie(req_other, "testcookie"),
-    NA_character_
+    NULL
   )
   expect_identical(
     extract_cookie(req_only_test, "testcookie"),
+    "expected_value"
+  )
+  expect_identical(
+    extract_cookie(req_only_test, "testcookie", NA_character_),
     "expected_value"
   )
   expect_identical(

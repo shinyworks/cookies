@@ -75,6 +75,8 @@ remove_cookie <- function(cookie_name,
 #'
 #' @inheritParams .shared-parameters
 #' @inheritParams shiny::moduleServer
+#' @param missing The value to return if the requested cookie does not exist.
+#' Defaults to NULL.
 #'
 #' @return A character with the value of the cookie.
 #' @export
@@ -83,9 +85,10 @@ remove_cookie <- function(cookie_name,
 #'   get_cookie("my_cookie")
 #' }
 get_cookie <- function(cookie_name,
+                       missing = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
   # Once the cookies are initialized, use the input value.
   session$input$cookies[[cookie_name]] %||%
     # But when the app first loads, the cookies are only in the request object.
-    extract_cookie(session$request, cookie_name)
+    extract_cookie(session$request, cookie_name, missing)
 }

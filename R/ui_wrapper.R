@@ -34,46 +34,50 @@ cookie_dependency <- function() {
 #' @examples
 #' str(add_cookie_handlers("example"))
 add_cookie_handlers <- function(ui) {
-  # The return needs to match the input.
+  UseMethod("add_cookie_handlers")
+}
 
-  # Case 1: Don't mess with httpResponse objects.
-  if (inherits(ui, "httpResponse")) {
-    return(ui)
-  }
-
-  # Case 2: Functions depend on whether they're request-handlers or something
-  # else.
-  if (is.function(ui)) {
-    force(ui)
-    if (length(formals(ui))) {
-      return(
-        function(request) {
-          ui <- ui(request)
-          return(
-            shiny::tagList(
-              cookie_dependency(),
-              ui
-            )
-          )
-        }
-      )
-    } else {
-      return(
-        function() {
-          shiny::tagList(
-            cookie_dependency(),
-            ui()
-          )
-        }
-      )
-    }
-  }
-
-  # Case 3: Simple tagsList-style uis should remain simple.
+#' @export
+add_cookie_handlers.default <- function(ui) {
   return(
     shiny::tagList(
       cookie_dependency(),
       ui
     )
   )
+}
+
+#' @export
+add_cookie_handlers.httpResponse <- function(ui) {
+  # Don't mess with things that are already httpResponses.
+  return(ui)
+}
+
+#' @export
+add_cookie_handlers.function <- function(ui) {
+  # For functions we need to return a function, which does our thing then
+  # carries on with whatever the function originally did.
+  force(ui)
+  if (length(formals(ui))) {
+    return(
+      function(request) {
+        ui <- ui(request)
+        return(
+          shiny::tagList(
+            cookie_dependency(),
+            ui
+          )
+        )
+      }
+    )
+  } else {
+    return(
+      function() {
+        shiny::tagList(
+          cookie_dependency(),
+          ui()
+        )
+      }
+    )
+  }
 }

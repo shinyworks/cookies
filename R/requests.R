@@ -16,7 +16,7 @@
 #' extract_cookie(req, "cookie2")
 #' extract_cookie(list(), "cookie1")
 #' extract_cookie(NULL, "cookie1")
-extract_cookie <- function(request, cookie_name, missing=NULL) {
+extract_cookie <- function(request, cookie_name, missing = NULL) {
   cookies <- extract_cookies(request = request)
 
   if (length(cookies) && cookie_name %in% names(cookies)) {

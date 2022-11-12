@@ -5,6 +5,8 @@
 #'
 #' @inheritParams extract_cookies
 #' @inheritParams .shared-parameters
+#' @param missing The value to return if the requested cookie is not stored in
+#' the request. Defaults to `NULL`.
 #'
 #' @return The contents of that cookie.
 #' @export
@@ -14,13 +16,13 @@
 #' extract_cookie(req, "cookie2")
 #' extract_cookie(list(), "cookie1")
 #' extract_cookie(NULL, "cookie1")
-extract_cookie <- function(request, cookie_name) {
+extract_cookie <- function(request, cookie_name, missing = NULL) {
   cookies <- extract_cookies(request = request)
 
   if (length(cookies) && cookie_name %in% names(cookies)) {
     return(cookies[[cookie_name]])
   } else {
-    return(NA_character_)
+    return(missing)
   }
 }
 

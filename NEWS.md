@@ -2,6 +2,9 @@
 
 # cookies 0.1.1
 
+* Added `get_cookie()` to easily get cookies with in the server.
+* Added `missing` as a parameter to `get_cookie()` and `extract_cookie()` for when the cookie doesn't exist.
+* Changed the default behavior for missing cookies from `NA` to `NULL` to be more in line with R convention.
 * Updated a test. No user-facing changes.
 
 # cookies 0.1.0

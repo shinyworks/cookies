@@ -4,12 +4,19 @@
 \alias{get_cookie}
 \title{Read a cookie}
 \usage{
-get_cookie(cookie_name, session = shiny::getDefaultReactiveDomain())
+get_cookie(
+  cookie_name,
+  missing = NULL,
+  session = shiny::getDefaultReactiveDomain()
+)
 }
 \arguments{
 \item{cookie_name}{The name of the cookie. Can contain any US-ASCII
 characters except for: the control character, space, a tab, or separator
 characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+
+\item{missing}{The value to return if the requested cookie does not exist.
+Defaults to NULL.}
 
 \item{session}{Session from which to make a child scope (the default should
 almost always be used).}

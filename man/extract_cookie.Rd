@@ -4,7 +4,7 @@
 \alias{extract_cookie}
 \title{Extract an individual cookie from a shiny request}
 \usage{
-extract_cookie(request, cookie_name)
+extract_cookie(request, cookie_name, missing = NULL)
 }
 \arguments{
 \item{request}{A shiny request object.}
@@ -12,6 +12,9 @@ extract_cookie(request, cookie_name)
 \item{cookie_name}{The name of the cookie. Can contain any US-ASCII
 characters except for: the control character, space, a tab, or separator
 characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
+
+\item{missing}{The value to return if the requested cookie is not stored in
+the request. Defaults to \code{NULL}.}
 }
 \value{
 The contents of that cookie.

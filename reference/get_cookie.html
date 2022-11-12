@@ -51,7 +51,11 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_cookie</span><span class="op">(</span><span class="va">cookie_name</span>, session <span class="op">=</span> <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/domains.html" class="external-link">getDefaultReactiveDomain</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_cookie</span><span class="op">(</span></span>
+<span>  <span class="va">cookie_name</span>,</span>
+<span>  missing <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  session <span class="op">=</span> <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/domains.html" class="external-link">getDefaultReactiveDomain</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,6 +64,11 @@
 <dd><p>The name of the cookie. Can contain any US-ASCII
 characters except for: the control character, space, a tab, or separator
 characters like ( ) &lt; &gt; @ , ; : \ " / [ ] ? = { }.</p></dd>
+
+
+<dt>missing</dt>
+<dd><p>The value to return if the requested cookie does not exist.
+Defaults to NULL.</p></dd>
 
 
 <dt>session</dt>

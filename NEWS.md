@@ -1,4 +1,4 @@
-# cookies (development version)
+# cookies 0.2.0
 
 * Added `get_cookie()` to more easily get cookies within the server (#32).
 * Added `missing` as a parameter to `get_cookie()` and `extract_cookie()` for when the cookie doesn't exist (@jnolis, #38).

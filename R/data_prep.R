@@ -29,6 +29,39 @@
   return(attributes)
 }
 
+#' Ensure the argument is a single logical value
+#'
+#' @param arg_value The value of the argument.
+#' @param arg_name The name of the argument for error messages.
+#' @param arg_class The expected class for error messages.
+#'
+#' @return The value (if it is length-1).
+#' @keywords internal
+.validate_scalar <- function(arg_value, arg_name, arg_type = "logical") {
+  if (length(arg_value) > 1) {
+    cli::cli_abort("{arg_name} must be a length-1 {arg_type} or NULL.")
+  }
+  return(arg_value)
+}
+
+#' Ensure the argument is a single logical value
+#'
+#' @inheritParams .validate_scalar
+#'
+#' @return `NULL` or `TRUE`.
+#' @keywords internal
+.validate_logical_scalar <- function(arg_value, arg_name) {
+  .validate_scalar(arg_value, arg_name)
+
+  arg_value <- vctrs::vec_cast(arg_value, logical())
+
+  if (isTRUE(arg_value)) {
+    return(arg_value)
+  } else {
+    return(NULL)
+  }
+}
+
 #' Ensure secure_only is valid
 #'
 #' @inheritParams .shared-parameters
@@ -36,17 +69,9 @@
 #' @return `NULL` or `TRUE`.
 #' @keywords internal
 .validate_secure_only <- function(secure_only) {
-  if (length(secure_only) > 1) {
-    cli::cli_abort("secure_only must be a length-1 logical or NULL.")
-  }
-
-  secure_only <- vctrs::vec_cast(secure_only, logical())
-
-  if (isTRUE(secure_only)) {
-    return(secure_only)
-  } else {
-    return(NULL)
-  }
+  return(
+    .validate_logical_scalar(secure_only, "secure_only")
+  )
 }
 
 #' Ensure http_only is valid
@@ -56,17 +81,9 @@
 #' @return `NULL` or `TRUE`.
 #' @keywords internal
 .validate_http_only <- function(http_only) {
-  if (length(http_only) > 1) {
-    cli::cli_abort("http_only must be a length-1 logical or NULL.")
-  }
-
-  http_only <- vctrs::vec_cast(http_only, logical())
-
-  if (isTRUE(http_only)) {
-    return(http_only)
-  } else {
-    return(NULL)
-  }
+  return(
+    .validate_logical_scalar(http_only, "http_only")
+  )
 }
 
 #' Ensure same_site is valid
@@ -80,9 +97,7 @@
     return(same_site)
   }
 
-  if (length(same_site) != 1) {
-    cli::cli_abort("same_site must be a length-1 character or NULL.")
-  }
+  .validate_scalar(same_site, "same_site", "character")
 
   # Capitalize only the first letter.
   same_site <- gsub("^(.)", "\\U\\1\\E", tolower(same_site), perl = TRUE)
@@ -105,9 +120,7 @@
 #' @return `NULL` or the expiration as a double.
 #' @keywords internal
 .validate_expiration <- function(expiration) {
-  if (length(expiration) > 1) {
-    cli::cli_abort("expiration must be a length-1 double or NULL.")
-  }
+  .validate_scalar(expiration, "expiration", "double")
 
   # Anything NULL-like should return NULL.
   if (length(expiration) == 0 || is.na(expiration) || expiration == 0) {
@@ -130,9 +143,7 @@
     return(domain)
   }
 
-  if (length(domain) > 1) {
-    cli::cli_abort("domain must be a length-1 character or NULL.")
-  }
+  .validate_scalar(domain, "domain", "character")
 
   return(
     vctrs::vec_cast(domain, character())
@@ -150,9 +161,7 @@
     return(path)
   }
 
-  if (length(path) > 1) {
-    cli::cli_abort("path must be a length-1 character or NULL.")
-  }
+  .validate_scalar(path, "path", "character")
 
   return(
     vctrs::vec_cast(path, character())

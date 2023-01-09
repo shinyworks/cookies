@@ -10,12 +10,24 @@
 #' cookie_dependency()
 cookie_dependency <- function() {
   return(
-    htmltools::htmlDependency(
-      name = "shinycookie",
-      version = "1.0.0",
-      src = "js",
-      package = "cookies",
-      script = c("js.cookie.js", "cookie_input.js")
+    list(
+      htmltools::htmlDependency(
+        name = "jscookie",
+        version = "1.0.0",
+        src = c(
+          href = "https://cdn.jsdelivr.net/npm/js-cookie/dist/",
+          file = "js"
+        ),
+        package = "cookies",
+        script = "js.cookie.min.js"
+      ),
+      htmltools::htmlDependency(
+        name = "cookie_input",
+        version = "1.0.0",
+        src = "js",
+        package = "cookies",
+        script = "cookie_input.js"
+      )
     )
   )
 }

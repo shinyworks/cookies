@@ -1,4 +1,4 @@
-# cookies (development version)
+# cookies 0.2.1
 
 * The underlying 'js-cookie' JavaScript library now loads from source if it is available (#42).
 * Clarified the help for `cookie_dependency()` and `add_cookie_handlers()`, to hopefully make it clearer how they can be applied in any situation (#37).

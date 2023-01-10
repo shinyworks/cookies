@@ -14,6 +14,10 @@ js-cookie Javascript library exactly once.
 Add the js-cookie Javascript library as an HTML dependency, and make cookies
 available in the shiny input object.
 }
+\details{
+Call this function within your shiny ui to attach the necessary JavaScript
+code.
+}
 \examples{
 cookie_dependency()
 }

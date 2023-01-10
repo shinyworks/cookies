@@ -3,6 +3,9 @@
 #' Add the js-cookie Javascript library as an HTML dependency, and make cookies
 #' available in the shiny input object.
 #'
+#' Call this function within your shiny ui to attach the necessary JavaScript
+#' code.
+#'
 #' @return An [htmltools::htmlDependency()], which shiny uses to add the
 #'   js-cookie Javascript library exactly once.
 #' @export
@@ -35,7 +38,9 @@ cookie_dependency <- function() {
 #' Add cookies to an existing shiny ui
 #'
 #' Wrap a shiny ui in this function in order to add cookie-handling
-#' functionality.
+#' functionality. The ui can be defined in any format compatible with shiny,
+#' using functions such as [shiny::fluidPage()], [shiny::bootstrapPage()],
+#' [shiny::htmlTemplate()], or a raw HTML string.
 #'
 #' @inheritParams .shared-parameters
 #' @return An object with the same signature as the input `ui`, but with the

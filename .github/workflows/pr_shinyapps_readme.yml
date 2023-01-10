@@ -1,0 +1,13 @@
+name: pr_shinyapps
+on:
+  pull_request:
+    branches: main
+    paths:
+      - 'README.md'
+  workflow_dispatch:
+
+jobs:
+  deploy-shinyapps:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "No build required" '

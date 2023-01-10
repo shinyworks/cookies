@@ -1,6 +1,6 @@
 # cookies (development version)
 
-* ADD NEXT BULLET HERE.
+* The underlying 'js-cookie' JavaScript library now loads from source if it is available (#42).
 
 # cookies 0.2.0
 

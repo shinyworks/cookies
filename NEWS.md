@@ -1,3 +1,5 @@
+# cookies (development version)
+
 # cookies 0.2.1
 
 * The underlying 'js-cookie' JavaScript library now loads from source if it is available (#42).

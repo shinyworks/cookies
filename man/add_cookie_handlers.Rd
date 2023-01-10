@@ -18,7 +18,9 @@ be returned.
 }
 \description{
 Wrap a shiny ui in this function in order to add cookie-handling
-functionality.
+functionality. The ui can be defined in any format compatible with shiny,
+using functions such as \code{\link[shiny:fluidPage]{shiny::fluidPage()}}, \code{\link[shiny:bootstrapPage]{shiny::bootstrapPage()}},
+\code{\link[shiny:reexports]{shiny::htmlTemplate()}}, or a raw HTML string.
 }
 \examples{
 str(add_cookie_handlers("example"))

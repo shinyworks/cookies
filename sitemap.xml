@@ -70,10 +70,16 @@
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_http_only.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_logical_scalar.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_path.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_same_site.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-validate_scalar.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-validate_secure_only.html</loc>

@@ -88,7 +88,11 @@ get_cookie <- function(cookie_name,
                        missing = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
   # Once the cookies are initialized, use the input value.
-  session$input$cookies[[cookie_name]] %||%
-    # But when the app first loads, the cookies are only in the request object.
+  if ("cookies" %in% names(session$input)) {
+    session$input$cookies[[cookie_name]] %||% missing
+  } else {
+    # But, when the app first loads, you might get a weird race condition where
+    # the input isn't populate yet.
     extract_cookie(session$request, cookie_name, missing)
+  }
 }

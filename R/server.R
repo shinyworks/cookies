@@ -3,7 +3,6 @@
 #' Instruct the user's browser to create a cookie via JavaScript.
 #'
 #' @inheritParams .shared-parameters
-#' @inheritParams shiny::moduleServer
 #'
 #' @return A call to `session$sendCustomMessage()` which sets the targeted
 #'   cookie.
@@ -26,6 +25,16 @@ set_cookie <- function(cookie_name,
                        path = NULL,
                        same_site = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
+  if (.is_http_only(cookie_name, session)) {
+    cli::cli_abort(
+      c(
+        x = "Cannot update cookie {cookie_name}.",
+        i = "HttpOnly cookies can only be updated via set_cookie_response()."
+      ),
+      class = "error_http_only_js"
+    )
+  }
+
   attributes <- .javascript_attributes(
     expiration = expiration,
     secure_only = secure_only,
@@ -33,6 +42,15 @@ set_cookie <- function(cookie_name,
     path = path,
     same_site = same_site
   )
+
+  # Create an observer to fail if the cookie fails to save. This should never
+  # happen but maybe they don't have write access or something similarly weird.
+  shiny::observeEvent( # nocov start
+    session$input$cookie_set_error,
+    cli::cli_abort(session$input$cookie_set_error),
+    ignoreInit = TRUE,
+    once = TRUE
+  ) # nocov end
 
   session$sendCustomMessage(
     "cookie-set",
@@ -49,7 +67,6 @@ set_cookie <- function(cookie_name,
 #' Instruct the user's browser to remove a cookie via JavaScript.
 #'
 #' @inheritParams .shared-parameters
-#' @inheritParams shiny::moduleServer
 #'
 #' @return A call to `session$sendCustomMessage()` which removes the targeted
 #'   cookie.
@@ -63,6 +80,30 @@ set_cookie <- function(cookie_name,
 #' }
 remove_cookie <- function(cookie_name,
                           session = shiny::getDefaultReactiveDomain()) {
+  if (.is_http_only(cookie_name, session)) {
+    cli::cli_abort(
+      c(
+        x = "Cannot remove cookie {cookie_name}.",
+        i = "HttpOnly cookies can only be updated via set_cookie_response()."
+      ),
+      class = "error_http_only_js"
+    )
+  }
+
+  # Create an observer to fail if the cookie fails to be removed. This should
+  # never happen but maybe they don't have write access or something similarly
+  # weird.
+  shiny::observeEvent( # nocov start
+    session$input$cookie_remove_error,
+    cli::cli_abort(
+      c(
+        x = session$input$cookie_remove_error
+      )
+    ),
+    ignoreInit = TRUE,
+    once = TRUE
+  ) # nocov end
+
   session$sendCustomMessage(
     "cookie-remove",
     list(name = cookie_name)
@@ -74,7 +115,6 @@ remove_cookie <- function(cookie_name,
 #' Read a cookie from the input object.
 #'
 #' @inheritParams .shared-parameters
-#' @inheritParams shiny::moduleServer
 #' @param missing The value to return if the requested cookie does not exist.
 #' Defaults to NULL.
 #'
@@ -87,12 +127,39 @@ remove_cookie <- function(cookie_name,
 get_cookie <- function(cookie_name,
                        missing = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
-  # Once the cookies are initialized, use the input value.
-  if ("cookies" %in% names(session$input)) {
-    session$input$cookies[[cookie_name]] %||% missing
+  # When the app first loads, you might get a weird race condition where the
+  # input isn't populated yet, so you need to use the request object even for
+  # normal cookies.
+  if (
+    .is_http_only(cookie_name, session) ||
+    !("cookies" %in% names(session$input))
+  ) {
+    return(extract_cookie(session$request, cookie_name, missing))
   } else {
-    # But, when the app first loads, you might get a weird race condition where
-    # the input isn't populate yet.
-    extract_cookie(session$request, cookie_name, missing)
+    # Once the cookies are initialized, use the input value (even if there isn't
+    # a value for this cookie) for non-http-only cookies.
+    return(session$input$cookies[[cookie_name]] %||% missing)
   }
+}
+
+#' Is this cookie HttpOnly?
+#'
+#' HttpOnly cookies can't be manipulated via javascript.
+#'
+#' @inheritParams .shared-parameters
+#' @param cookie_name The cookie to check.
+#' @param session
+#'
+#' @return
+#' @export
+#'
+#' @examples
+.is_http_only <- function(cookie_name,
+                          session = shiny::getDefaultReactiveDomain()) {
+  # A cookie can be assumed to be http_only if it was in the request, but was
+  # NOT in the initial cookies detected by javascript.
+  starting_cookies <- names(session$input$cookies_start)
+  req_cookies <- names(extract_cookies(session$request))
+  http_only_cookies <- setdiff(req_cookies, starting_cookies)
+  return(cookie_name %in% http_only_cookies)
 }

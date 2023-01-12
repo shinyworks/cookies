@@ -1,5 +1,7 @@
 # cookies (development version)
 
+* Updated cookie handling to allow HttpOnly cookies mixed with JavaScript cookies, and improved error messages (#54).
+
 # cookies 0.2.1
 
 * The underlying 'js-cookie' JavaScript library now loads from source if it is available (#42).

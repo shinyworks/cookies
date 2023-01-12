@@ -24,6 +24,8 @@
 #'   `TRUE`.
 #' @param secure_only Logical indicating whether the cookie should only be
 #'   accessible via secure (`https:`) requests (except on localhost).
+#' @param session Shiny session in which the cookies can be found (the default
+#'   should probably always be used).
 #' @param ui A 0- or 1-argument function defining the ui of a shiny app, or a
 #'   [shiny::tagList()].
 #'

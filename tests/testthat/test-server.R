@@ -81,9 +81,52 @@ test_that("get_cookie works.", {
     get_cookie("key", session = session),
     "value"
   )
-  session$input <- list(cookies = list(key = "value2"))
+  session$input <- list(
+    cookies = list(key = "value2"),
+    cookies_start = list(key = "value2")
+  )
   expect_identical(
     get_cookie("key", session = session),
     "value2"
+  )
+})
+
+test_that("set_cookie errors appropriately.", {
+  session$input <- list(
+    cookies_start = list(normal_cookie = 2)
+  )
+  session$request <- list(
+    HTTP_COOKIE = "http_only_cookie=1; normal_cookie=2"
+  )
+  expect_error(
+    set_cookie("http_only_cookie", session = session),
+    class = "error_http_only_js"
+  )
+
+  # I'm not going to make the rest work, I just want to make sure I get past the
+  # check.
+  expect_no_error(
+    set_cookie(
+      cookie_name = "normal_cookie",
+      cookie_value = 3,
+      session = session
+    )
+  )
+})
+
+test_that("remove_cookie errors appropriately.", {
+  session$input <- list(
+    cookies_start = list(normal_cookie = 2)
+  )
+  session$request <- list(
+    HTTP_COOKIE = "http_only_cookie=1; normal_cookie=2"
+  )
+  expect_error(
+    remove_cookie("http_only_cookie", session = session),
+    class = "error_http_only_js"
+  )
+
+  expect_no_error(
+    remove_cookie("normal_cookie", session = session)
   )
 })

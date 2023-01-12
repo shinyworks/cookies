@@ -13,16 +13,40 @@ function getCookies(){
 }
 
 Shiny.addCustomMessageHandler('cookie-set', function(msg){
-  Cookies.set(msg.name, msg.value, msg.attributes);
-  getCookies();
-})
+  try {
+    Cookies.set(msg.name, msg.value, msg.attributes);
+    let cookie = Cookies.get(msg.name);
+    if (cookie === undefined) {
+      throw "Failed to set cookie '" + msg.name + "'.";
+    }
+    getCookies();
+  } catch (error) {
+    Shiny.setInputValue("cookie_set_error", error);
+    console.log(error);
+  }
+});
 
 Shiny.addCustomMessageHandler('cookie-remove', function(msg){
-  Cookies.remove(msg.name);
-  getCookies();
-})
+  try {
+    Cookies.remove(msg.name);
+    let cookie = Cookies.get(msg.name);
+    if (cookie !== undefined) {
+      throw "Failed to remove cookie '" + msg.name + "'.";
+    }
+    getCookies();
+  } catch (error) {
+    Shiny.setInputValue("cookie_remove_error", error);
+    console.log(error);
+  }
+});
 
 
 $(document).on('shiny:connected', function(ev){
+  let jsCookiesStart = Cookies.get();
+  Shiny.setInputValue('cookies_start', jsCookiesStart);
   getCookies();
-})
+});
+
+window.addEventListener('focus', function() {
+  getCookies();
+});

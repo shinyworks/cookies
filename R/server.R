@@ -46,8 +46,8 @@ set_cookie <- function(cookie_name,
   # Create an observer to fail if the cookie fails to save. This should never
   # happen but maybe they don't have write access or something similarly weird.
   shiny::observeEvent( # nocov start
-    session$input$cookie_set_error,
-    cli::cli_abort(session$input$cookie_set_error),
+    .root_session(session)$input$cookie_set_error,
+    cli::cli_abort(.root_session(session)$input$cookie_set_error),
     ignoreInit = TRUE,
     once = TRUE
   ) # nocov end
@@ -94,10 +94,10 @@ remove_cookie <- function(cookie_name,
   # never happen but maybe they don't have write access or something similarly
   # weird.
   shiny::observeEvent( # nocov start
-    session$input$cookie_remove_error,
+    .root_session(session)$input$cookie_remove_error,
     cli::cli_abort(
       c(
-        x = session$input$cookie_remove_error
+        x = .root_session(session)$input$cookie_remove_error
       )
     ),
     ignoreInit = TRUE,
@@ -127,18 +127,45 @@ remove_cookie <- function(cookie_name,
 get_cookie <- function(cookie_name,
                        missing = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
+  # The values we need are stored in the root session.
+  session <- .root_session(session)
+
   # When the app first loads, you might get a weird race condition where the
   # input isn't populated yet, so you need to use the request object even for
   # normal cookies.
   if (
     .is_http_only(cookie_name, session) ||
-    !("cookies" %in% names(session$input))
+      !("cookies" %in% names(session$input))
   ) {
     return(extract_cookie(session$request, cookie_name, missing))
   } else {
     # Once the cookies are initialized, use the input value (even if there isn't
     # a value for this cookie) for non-http-only cookies.
     return(session$input$cookies[[cookie_name]] %||% missing)
+  }
+}
+
+#' Find the main session
+#'
+#' This function escapes from a module (or submodule, etc) to find the root
+#' session.
+#'
+#' @param session A session object. Probably always use the default.
+#'
+#' @return The first session that isn't a "session_proxy".
+#' @keywords internal
+.root_session <- function(session = shiny::getDefaultReactiveDomain()) {
+  # Some hardening of this was inspired by the unexported function
+  # find_ancestor_session() in shiny.
+  depth <- 20L
+  while (inherits(session, "session_proxy") && depth > 0) {
+    session <- .subset2(session, "parent")
+    depth <- depth - 1L
+  }
+  if (inherits(session, "ShinySession")) {
+    return(session)
+  } else {
+    stop("Root session not found.")
   }
 }
 
@@ -156,6 +183,7 @@ get_cookie <- function(cookie_name,
 #' @examples
 .is_http_only <- function(cookie_name,
                           session = shiny::getDefaultReactiveDomain()) {
+  session <- .root_session(session)
   # A cookie can be assumed to be http_only if it was in the request, but was
   # NOT in the initial cookies detected by javascript.
   starting_cookies <- names(session$input$cookies_start)

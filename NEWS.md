@@ -1,6 +1,7 @@
 # cookies (development version)
 
 * Updated cookie handling to allow HttpOnly cookies mixed with JavaScript cookies, and improved error messages (#54).
+* Updated cookie handling to find cookies even if the call comes from inside a module (#56).
 
 # cookies 0.2.1
 

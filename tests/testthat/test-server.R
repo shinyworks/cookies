@@ -1,5 +1,5 @@
 # Stub a session so we can test these outside of shiny.
-session <- list()
+session <- structure(list(), class = "ShinySession")
 session$sendCustomMessage <- function(type, message) {
   my_types <- c("cookie-set", "cookie-remove")
   if (!(type %in% my_types)) {
@@ -91,6 +91,37 @@ test_that("get_cookie works.", {
   )
 })
 
+test_that("get_cookie works inside modules.", {
+  # When you're in a module, the session is a special session_proxy that has its
+  # parent inside of it. Make sure we can still get cookies.
+  root_session <- structure(
+    list(
+      request = list(HTTP_COOKIE = "key=value"),
+      input = list(
+        cookies = list(
+          key = "value",
+          key2 = "value2"
+        ),
+        cookies_start = list(key = "value")
+      )
+    ),
+    class = "ShinySession"
+  )
+  subsession <- structure(
+    list(
+      parent = root_session,
+      overrides = list(
+        input = list()
+      )
+    ),
+    class = "session_proxy"
+  )
+  expect_identical(
+    get_cookie("key2", session = subsession),
+    "value2"
+  )
+})
+
 test_that("set_cookie errors appropriately.", {
   session$input <- list(
     cookies_start = list(normal_cookie = 2)
@@ -128,5 +159,12 @@ test_that("remove_cookie errors appropriately.", {
 
   expect_no_error(
     remove_cookie("normal_cookie", session = session)
+  )
+})
+
+test_that(".root_session fails gracefully.", {
+  expect_error(
+    .root_session(list()),
+    "not found"
   )
 })

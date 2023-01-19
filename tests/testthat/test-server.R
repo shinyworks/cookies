@@ -161,3 +161,10 @@ test_that("remove_cookie errors appropriately.", {
     remove_cookie("normal_cookie", session = session)
   )
 })
+
+test_that(".root_session fails gracefully.", {
+  expect_error(
+    .root_session(list()),
+    "not found"
+  )
+})

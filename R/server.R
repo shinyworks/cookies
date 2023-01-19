@@ -135,7 +135,7 @@ get_cookie <- function(cookie_name,
   # normal cookies.
   if (
     .is_http_only(cookie_name, session) ||
-    !("cookies" %in% names(session$input))
+      !("cookies" %in% names(session$input))
   ) {
     return(extract_cookie(session$request, cookie_name, missing))
   } else {

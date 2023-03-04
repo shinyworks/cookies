@@ -2,30 +2,22 @@ Package: cookies
 Title: Use Browser Cookies with 'shiny'
 Version: 0.2.1.9000
 Authors@R: c(
-    person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre", 
-           "cph"), comment = c(ORCID = "0000-0003-4781-4346")),
-    person("Klaus", "Hartl", 
-           role = c("cph"), comment = "js-cookie JavaScript library"),
-    person("Fagner", "Brack",
-           role = c("cph"), comment = "js-cookie JavaScript library")
-    )
-Description: Browser cookies are name-value pairs that are saved in a user's 
-    browser by a website. Cookies allow websites to persist information about 
-    the user and their use of the website. Here we provide tools for working 
-    with cookies in 'shiny' apps, in part by wrapping the 'js-cookie' JavaScript 
-    library <https://github.com/js-cookie/js-cookie>.
+    person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0003-4781-4346")),
+    person("Klaus", "Hartl", role = "cph",
+           comment = "js-cookie JavaScript library"),
+    person("Fagner", "Brack", role = "cph",
+           comment = "js-cookie JavaScript library")
+  )
+Description: Browser cookies are name-value pairs that are saved in a
+    user's browser by a website. Cookies allow websites to persist
+    information about the user and their use of the website. Here we
+    provide tools for working with cookies in 'shiny' apps, in part by
+    wrapping the 'js-cookie' JavaScript library
+    <https://github.com/js-cookie/js-cookie>.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-URL: https://github.com/r4ds/cookies,
-    https://r4ds.github.io/cookies/
+URL: https://github.com/r4ds/cookies, https://r4ds.github.io/cookies/
 BugReports: https://github.com/r4ds/cookies/issues
-Suggests: 
-    covr,
-    roxygen2,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Imports: 
     cli,
     clock,
@@ -38,3 +30,11 @@ Imports:
     shiny (>= 1.6.0),
     stats,
     vctrs
+Suggests: 
+    covr,
+    roxygen2,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

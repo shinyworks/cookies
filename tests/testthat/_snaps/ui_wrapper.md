@@ -6,7 +6,7 @@
       [[1]]
       List of 10
        $ name      : chr "jscookie"
-       $ version   : chr "1.0.0"
+       $ version   : chr "3.0.1"
        $ src       :List of 2
         ..$ href: chr "https://cdn.jsdelivr.net/npm/js-cookie/dist/"
         ..$ file: chr "js"
@@ -43,7 +43,7 @@
       [[1]]
       List of 10
        $ name      : chr "jscookie"
-       $ version   : chr "1.0.0"
+       $ version   : chr "3.0.1"
        $ src       :List of 2
         ..$ href: chr "https://cdn.jsdelivr.net/npm/js-cookie/dist/"
         ..$ file: chr "js"
@@ -87,7 +87,7 @@
       [[1]]
       List of 10
        $ name      : chr "jscookie"
-       $ version   : chr "1.0.0"
+       $ version   : chr "3.0.1"
        $ src       :List of 2
         ..$ href: chr "https://cdn.jsdelivr.net/npm/js-cookie/dist/"
         ..$ file: chr "js"
@@ -131,7 +131,7 @@
       [[1]]
       List of 10
        $ name      : chr "jscookie"
-       $ version   : chr "1.0.0"
+       $ version   : chr "3.0.1"
        $ src       :List of 2
         ..$ href: chr "https://cdn.jsdelivr.net/npm/js-cookie/dist/"
         ..$ file: chr "js"

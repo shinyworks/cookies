@@ -129,8 +129,8 @@ should see that the first slider is remembered, while the second is not.
 - **Last visit:** You could log a datestamp when the page loads (and
   transfer any existing value to another variable or another cookie) to,
   for example, notify users about new features since their last visit.
-- **Many others:** If you have use case but you aren’t certain how to
-  implement, please open an issue!
+- **Many others:** If you have a use case but you aren’t certain how to
+  implement it, please open an issue!
 
 ## Code of Conduct
 

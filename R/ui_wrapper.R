@@ -15,8 +15,8 @@ cookie_dependency <- function() {
   return(
     list(
       htmltools::htmlDependency(
-        name = "jscookie",
-        version = "1.0.0",
+        name = "js-cookie",
+        version = "3.0.1",
         src = c(
           href = "https://cdn.jsdelivr.net/npm/js-cookie/dist/",
           file = "js"

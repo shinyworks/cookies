@@ -12,3 +12,4 @@
 ^CRAN-SUBMISSION$
 ^app\.R
 ^R/_disable_autoload\.R$
+^revdep$

@@ -49,7 +49,13 @@
     <loc>https://r4ds.github.io/cookies/reference/dot-http_date.html</loc>
   </url>
   <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-is_http_only.html</loc>
+  </url>
+  <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-javascript_attributes.html</loc>
+  </url>
+  <url>
+    <loc>https://r4ds.github.io/cookies/reference/dot-root_session.html</loc>
   </url>
   <url>
     <loc>https://r4ds.github.io/cookies/reference/dot-shared-parameters.html</loc>

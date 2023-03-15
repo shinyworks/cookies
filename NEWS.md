@@ -1,3 +1,5 @@
+# cookies (development version)
+
 # cookies 0.2.2
 
 * Updated cookie handling to allow HttpOnly cookies mixed with JavaScript cookies, and improved error messages (#54).

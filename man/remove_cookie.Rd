@@ -11,8 +11,8 @@ remove_cookie(cookie_name, session = shiny::getDefaultReactiveDomain())
 characters except for: the control character, space, a tab, or separator
 characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 
-\item{session}{Session from which to make a child scope (the default should
-almost always be used).}
+\item{session}{Shiny session in which the cookies can be found (the default
+should probably always be used).}
 }
 \value{
 A call to \code{session$sendCustomMessage()} which removes the targeted

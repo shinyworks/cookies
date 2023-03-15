@@ -1,30 +1,15 @@
-## 0.2.1
-
-0 errors | 0 warnings | 0 notes
-
-In this version I have:
-
-- Set the underlying javascript library to load from source when available.
-- Clarified some documentation.
-- Updated get_cookie() to work better with deleted cookies.
-
-## 0.2.0
-
-0 errors | 0 warnings | 0 notes
-
-In this version I have:
-
-- Added a get_cookie() function to more easily read a cookie in the shiny server function.
-- Added better handling for missing cookie values.
-
-## 0.1.1
-
-In this version I have:
-
-- fixed a failing test (and hardened it against dependency changes).
-
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
-Days since last update: 0
+## revdepcheck results
+
+We checked 1 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
+
+## Change summary
+
+- Improved handling of HttpOnly cookies mixed with JavaScript cookies.
+- Improved usage of cookies within 'shiny' modules.

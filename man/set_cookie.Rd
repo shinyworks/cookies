@@ -39,8 +39,8 @@ send this cookie. Includes subdirectories.}
 the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} must be
 \code{TRUE}.}
 
-\item{session}{Session from which to make a child scope (the default should
-almost always be used).}
+\item{session}{Shiny session in which the cookies can be found (the default
+should probably always be used).}
 }
 \value{
 A call to \code{session$sendCustomMessage()} which sets the targeted

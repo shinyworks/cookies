@@ -34,6 +34,9 @@ the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} mu
 \item{secure_only}{Logical indicating whether the cookie should only be
 accessible via secure (\verb{https:}) requests (except on localhost).}
 
+\item{session}{Shiny session in which the cookies can be found (the default
+should probably always be used).}
+
 \item{ui}{A 0- or 1-argument function defining the ui of a shiny app, or a
 \code{\link[shiny:reexports]{shiny::tagList()}}.}
 }

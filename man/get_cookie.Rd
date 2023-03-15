@@ -18,8 +18,8 @@ characters like ( ) < > @ , ; : \\ " / [ ] ? = \{ \}.}
 \item{missing}{The value to return if the requested cookie does not exist.
 Defaults to NULL.}
 
-\item{session}{Session from which to make a child scope (the default should
-almost always be used).}
+\item{session}{Shiny session in which the cookies can be found (the default
+should probably always be used).}
 }
 \value{
 A character with the value of the cookie.

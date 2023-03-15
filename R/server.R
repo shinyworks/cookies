@@ -175,12 +175,9 @@ get_cookie <- function(cookie_name,
 #'
 #' @inheritParams .shared-parameters
 #' @param cookie_name The cookie to check.
-#' @param session
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @return A logical indicating whether `cookie_name` is http-only.
+#' @keywords internal
 .is_http_only <- function(cookie_name,
                           session = shiny::getDefaultReactiveDomain()) {
   session <- .root_session(session)

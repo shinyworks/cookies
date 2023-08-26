@@ -108,14 +108,14 @@
 <p>Here we’ll use a simple example to demonstrate this concept.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4ds/cookies" class="external-link">cookies</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/" class="external-link">shiny</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Wrap your ui with add_cookie_handlers() to enable cookies.</span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/add_cookie_handlers.html">add_cookie_handlers</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"A Simple App"</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"A Simple App"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidRow</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
 <span>        <span class="st">"number_selector"</span>,</span>
 <span>        label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
 <span>          <span class="st">"Select a number."</span>,</span>
@@ -128,7 +128,7 @@
 <span>        max <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>        value <span class="op">=</span> <span class="fl">1</span></span>
 <span>      <span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
 <span>        <span class="st">"number_selector_no_cookie"</span>,</span>
 <span>        label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
 <span>          <span class="st">"Select a number."</span>,</span>
@@ -146,10 +146,10 @@
 <span></span>
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># When the value changes, set a cookie.</span></span>
-<span>  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
 <span>    <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span>,</span>
 <span>    <span class="op">{</span></span>
-<span>      <span class="fu">cookies</span><span class="fu">::</span><span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="reference/set_cookie.html">set_cookie</a></span><span class="op">(</span></span>
 <span>        cookie_name <span class="op">=</span> <span class="st">"selected_number"</span>,</span>
 <span>        cookie_value <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">number_selector</span></span>
 <span>      <span class="op">)</span></span>
@@ -157,9 +157,9 @@
 <span>  <span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># Initialize the top slider from any cookies that come in at the start.</span></span>
-<span>  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html" class="external-link">observeEvent</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="reference/get_cookie.html">get_cookie</a></span><span class="op">(</span><span class="st">"selected_number"</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateSliderInput.html" class="external-link">updateSliderInput</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSliderInput.html" class="external-link">updateSliderInput</a></span><span class="op">(</span></span>
 <span>      inputId <span class="op">=</span> <span class="st">"number_selector"</span>,</span>
 <span>      value <span class="op">=</span> <span class="fu"><a href="reference/get_cookie.html">get_cookie</a></span><span class="op">(</span><span class="st">"selected_number"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
@@ -167,7 +167,7 @@
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp</a></span><span class="op">(</span></span>
 <span>  <span class="va">ui</span>,</span>
 <span>  <span class="va">server</span>,</span>
 <span>  <span class="co"># Cookies only work in an actual browser.</span></span>

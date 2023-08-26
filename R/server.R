@@ -25,6 +25,9 @@ set_cookie <- function(cookie_name,
                        path = NULL,
                        same_site = NULL,
                        session = shiny::getDefaultReactiveDomain()) {
+  # When the app first loads, you might get a weird race condition where the
+  # input isn't populated yet, so even normal cookies look like http-only
+  # cookies.
   if (.is_http_only(cookie_name, session)) {
     cli::cli_abort(
       c(
@@ -133,10 +136,7 @@ get_cookie <- function(cookie_name,
   # When the app first loads, you might get a weird race condition where the
   # input isn't populated yet, so you need to use the request object even for
   # normal cookies.
-  if (
-    .is_http_only(cookie_name, session) ||
-      !("cookies" %in% names(session$input))
-  ) {
+  if (.is_http_only(cookie_name, session)) {
     return(extract_cookie(session$request, cookie_name, missing))
   } else {
     # Once the cookies are initialized, use the input value (even if there isn't
@@ -181,10 +181,19 @@ get_cookie <- function(cookie_name,
 .is_http_only <- function(cookie_name,
                           session = shiny::getDefaultReactiveDomain()) {
   session <- .root_session(session)
-  # A cookie can be assumed to be http_only if it was in the request, but was
-  # NOT in the initial cookies detected by javascript.
-  starting_cookies <- names(session$input$cookies_start)
-  req_cookies <- names(extract_cookies(session$request))
-  http_only_cookies <- setdiff(req_cookies, starting_cookies)
-  return(cookie_name %in% http_only_cookies)
+
+  # If the input$cookies_start object hasn't initialized yet, we can't do this
+  # check properly, so we assume it isn't http-only.
+  if (
+    "input" %in% names(session) && "cookies_start" %in% names(session$input)
+  ) {
+    # A cookie can be assumed to be http_only if it was in the request, but was
+    # NOT in the initial cookies detected by javascript.
+    starting_cookies <- names(session$input$cookies_start)
+    req_cookies <- names(extract_cookies(session$request))
+    http_only_cookies <- setdiff(req_cookies, starting_cookies)
+    return(cookie_name %in% http_only_cookies)
+  }
+
+  return(FALSE)
 }

@@ -9,6 +9,9 @@
 
 function getCookies(){
   var res = Cookies.get();
+  /*res.map(function(cookie) {
+
+  }); */
   Shiny.setInputValue('cookies', res);
 }
 
@@ -45,6 +48,7 @@ $(document).on('shiny:connected', function(ev){
   let jsCookiesStart = Cookies.get();
   Shiny.setInputValue('cookies_start', jsCookiesStart);
   getCookies();
+  Shiny.setInputValue('cookies_ready', true);
 });
 
 window.addEventListener('focus', function() {

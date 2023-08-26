@@ -90,7 +90,7 @@ server <- function(input, output, session) {
   observeEvent(
     input$number_selector,
     {
-      cookies::set_cookie(
+      set_cookie(
         cookie_name = "selected_number",
         cookie_value = input$number_selector
       )

@@ -75,7 +75,7 @@ test_that("remove_cookie works.", {
 })
 
 test_that("get_cookie works.", {
-  session$input <- list()
+  session$input <- list(cookies_start = list(key = "value"))
   session$request <- list(HTTP_COOKIE = "key=value")
   expect_identical(
     get_cookie("key", session = session),

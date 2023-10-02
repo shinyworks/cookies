@@ -22,6 +22,30 @@
     Output
       {"name":["testname"],"value":["test contents"],"attributes":{"expires":[22],"secureOnly":[true],"domain":["this"],"path":["/docs/"],"sameSite":["None"]}} 
 
+---
+
+    Code
+      set_cookie(cookie_name = "testname", cookie_value = "test contents",
+        secure_only = FALSE, same_site = "None", session = session)
+    Error <rlang_error>
+      When same_site is None, secure_only must be TRUE.
+
+---
+
+    Code
+      set_cookie(cookie_name = "testname", cookie_value = "test contents", same_site = "blargh",
+        session = session)
+    Error <rlang_error>
+      same_site must be one of Strict, Lax, or None.
+
+---
+
+    Code
+      set_cookie(cookie_name = "testname", cookie_value = "test contents", same_site = 1:
+        3, session = session)
+    Error <rlang_error>
+      `same_site` must be a length-1 <character> or NULL.
+
 # remove_cookie works.
 
     Code

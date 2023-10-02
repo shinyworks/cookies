@@ -62,15 +62,15 @@ test_that("set_cookie_response works as expected.", {
     cookie_name = "name_of_cookie",
     cookie_value = "contents of the cookie"
   )
-  expected_string <- paste0(
-    "name_of_cookie=contents%20of%20the%20cookie; Expires=",
-    "Mon|Tue|Wed|Thu|Fri|Sat|Sun",
-    ", \\d{2} ",
-    glue::glue_collapse(month.abb, "|"),
-    "\\d{4} \\d{2}:\\d{2}:\\d{2} GMT"
+  expect_s3_class(with_time, "httpResponse")
+  with_time_header_set <- sub(
+    "Expires=.*$",
+    "TIMESTAMP",
+    with_time$headers$`Set-cookie`
   )
+  expected_string <- "name_of_cookie=contents%20of%20the%20cookie; TIMESTAMP"
   expect_match(
-    with_time$headers$`Set-cookie`,
+    with_time_header_set,
     expected_string
   )
 

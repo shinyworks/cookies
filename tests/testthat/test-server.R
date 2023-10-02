@@ -38,7 +38,7 @@ test_that("set_cookie works.", {
       session = session
     )
   )
-  expect_error(
+  expect_snapshot(
     set_cookie(
       cookie_name = "testname",
       cookie_value = "test contents",
@@ -46,25 +46,25 @@ test_that("set_cookie works.", {
       same_site = "None",
       session = session
     ),
-    "secure_only must be TRUE"
+    error = TRUE
   )
-  expect_error(
+  expect_snapshot(
     set_cookie(
       cookie_name = "testname",
       cookie_value = "test contents",
       same_site = "blargh",
       session = session
     ),
-    "must be one of Strict"
+    error = TRUE
   )
-  expect_error(
+  expect_snapshot(
     set_cookie(
       cookie_name = "testname",
       cookie_value = "test contents",
       same_site = 1:3,
       session = session
     ),
-    "must be a length-1 character or NULL"
+    error = TRUE
   )
 })
 

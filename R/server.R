@@ -136,7 +136,10 @@ get_cookie <- function(cookie_name,
   # When the app first loads, you might get a weird race condition where the
   # input isn't populated yet, so you need to use the request object even for
   # normal cookies.
-  if (.is_http_only(cookie_name, session)) {
+  if (
+    .is_http_only(cookie_name, session) ||
+      !(isTRUE(session$input$cookies_ready))
+  ) {
     return(extract_cookie(session$request, cookie_name, missing))
   } else {
     # Once the cookies are initialized, use the input value (even if there isn't

@@ -138,13 +138,13 @@ get_cookie <- function(cookie_name,
   # normal cookies.
   if (
     .is_http_only(cookie_name, session) ||
-      !(isTRUE(session$cookies_ready))
+      !(isTRUE(session$input$cookies_ready))
   ) {
     return(extract_cookie(session$request, cookie_name, missing))
   } else {
     # Once the cookies are initialized, use the input value (even if there isn't
     # a value for this cookie) for non-http-only cookies.
-    return(session$input[[paste0("cookie_", cookie_name)]] %||% missing)
+    return(session$input$cookies[[cookie_name]] %||% missing)
   }
 }
 

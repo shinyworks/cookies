@@ -1,16 +1,16 @@
-# Stub a session so we can test these outside of shiny.
-session <- structure(list(), class = "ShinySession")
-session$sendCustomMessage <- function(type, message) {
-  my_types <- c("cookie-set", "cookie-remove")
-  if (!(type %in% my_types)) {
-    stop("Bad type.")
-  }
-  return(
-    jsonlite::toJSON(message)
-  )
-}
-
 test_that("set_cookie works.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   expect_snapshot(
     set_cookie(
       cookie_name = "testname",
@@ -69,12 +69,36 @@ test_that("set_cookie works.", {
 })
 
 test_that("remove_cookie works.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   expect_snapshot(
     remove_cookie("testname", session = session)
   )
 })
 
 test_that("get_cookie works.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   session$input <- list(cookies_start = list(key = "value"))
   session$request <- list(HTTP_COOKIE = "key=value")
   expect_identical(
@@ -85,6 +109,7 @@ test_that("get_cookie works.", {
     cookies = list(key = "value2"),
     cookies_start = list(key = "value2")
   )
+  session$input$cookies_ready <- TRUE
   expect_identical(
     get_cookie("key", session = session),
     "value2"
@@ -92,6 +117,18 @@ test_that("get_cookie works.", {
 })
 
 test_that("get_cookie works inside modules.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   # When you're in a module, the session is a special session_proxy that has its
   # parent inside of it. Make sure we can still get cookies.
   root_session <- structure(
@@ -102,7 +139,8 @@ test_that("get_cookie works inside modules.", {
           key = "value",
           key2 = "value2"
         ),
-        cookies_start = list(key = "value")
+        cookies_start = list(key = "value"),
+        cookies_ready = TRUE
       )
     ),
     class = "ShinySession"
@@ -123,6 +161,18 @@ test_that("get_cookie works inside modules.", {
 })
 
 test_that("set_cookie errors appropriately.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   session$input <- list(
     cookies_start = list(normal_cookie = 2)
   )
@@ -146,6 +196,18 @@ test_that("set_cookie errors appropriately.", {
 })
 
 test_that("remove_cookie errors appropriately.", {
+  # Stub a session so we can test these outside of shiny.
+  session <- structure(list(), class = "ShinySession")
+  session$sendCustomMessage <- function(type, message) {
+    my_types <- c("cookie-set", "cookie-remove")
+    if (!(type %in% my_types)) {
+      stop("Bad type.")
+    }
+    return(
+      jsonlite::toJSON(message)
+    )
+  }
+
   session$input <- list(
     cookies_start = list(normal_cookie = 2)
   )

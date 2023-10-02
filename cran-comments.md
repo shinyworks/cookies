@@ -11,5 +11,5 @@ We checked 1 reverse dependencies, comparing R CMD check results across CRAN and
 
 ## Change summary
 
-- Improved handling of HttpOnly cookies mixed with JavaScript cookies.
-- Improved usage of cookies within 'shiny' modules.
+- Better handling of race-time conditions between R and JavaScript.
+- Cleaner tests.

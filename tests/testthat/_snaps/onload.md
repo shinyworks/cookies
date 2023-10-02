@@ -15,23 +15,23 @@
 
 # Bad attributes throw errors.
 
-    expiration must be a length-1 double or NULL.
+    `expiration` must be a length-1 <double> or NULL.
 
 ---
 
-    secure_only must be a length-1 logical or NULL.
+    `secure_only` must be a length-1 <logical> or NULL.
 
 ---
 
-    http_only must be a length-1 logical or NULL.
+    `http_only` must be a length-1 <logical> or NULL.
 
 ---
 
-    domain must be a length-1 character or NULL.
+    `domain` must be a length-1 <character> or NULL.
 
 ---
 
-    path must be a length-1 character or NULL.
+    `path` must be a length-1 <character> or NULL.
 
 # set_cookie_response works as expected.
 

@@ -33,13 +33,13 @@
 #'
 #' @param arg_value The value of the argument.
 #' @param arg_name The name of the argument for error messages.
-#' @param arg_class The expected class for error messages.
+#' @param arg_type The expected class for error messages.
 #'
 #' @return The value (if it is length-1).
 #' @keywords internal
 .validate_scalar <- function(arg_value, arg_name, arg_type = "logical") {
   if (length(arg_value) > 1) {
-    cli::cli_abort("{arg_name} must be a length-1 {arg_type} or NULL.")
+    cli::cli_abort("{.arg {arg_name}} must be a length-1 {.cls {arg_type}} or NULL.")
   }
   return(arg_value)
 }

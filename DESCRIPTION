@@ -1,6 +1,6 @@
 Package: cookies
 Title: Use Browser Cookies with 'shiny'
-Version: 0.2.2.9000
+Version: 0.2.3
 Authors@R: c(
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-4781-4346")),
@@ -32,6 +32,8 @@ Imports:
     vctrs
 Suggests: 
     covr,
+    pkgdown,
+    rmarkdown,
     roxygen2,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

@@ -11,7 +11,7 @@
 
 \item{arg_name}{The name of the argument for error messages.}
 
-\item{arg_class}{The expected class for error messages.}
+\item{arg_type}{The expected class for error messages.}
 }
 \value{
 The value (if it is length-1).

@@ -1,4 +1,7 @@
-# cookies (development version)
+# cookies 0.2.3
+
+* Better handling of race-time conditions between R and JavaScript (#63).
+* Cleaner tests.
 
 # cookies 0.2.2
 

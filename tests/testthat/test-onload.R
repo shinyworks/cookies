@@ -63,10 +63,10 @@ test_that("set_cookie_response works as expected.", {
     cookie_value = "contents of the cookie"
   )
   expect_s3_class(with_time, "httpResponse")
-  with_time_header_set <- stringr::str_replace(
-    with_time$headers$`Set-cookie`,
+  with_time_header_set <- sub(
     "Expires=.*$",
-    "TIMESTAMP"
+    "TIMESTAMP",
+    with_time$headers$`Set-cookie`
   )
   expected_string <- "name_of_cookie=contents%20of%20the%20cookie; TIMESTAMP"
   expect_match(

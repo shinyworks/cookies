@@ -119,7 +119,8 @@
     Code
       set_cookie_response(cookie_name = "name_of_cookie", cookie_value = "contents of the cookie",
         http_only = TRUE, expiration = NULL, redirect = "/", status = 200L)
-    Warning <rlang_warning>
+    Condition
+      Warning:
       Unexpected status code.
       x Status code 200 provided, expected 300 to 399.
     Output

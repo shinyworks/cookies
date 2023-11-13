@@ -16,8 +16,9 @@ Description: Browser cookies are name-value pairs that are saved in a
     wrapping the 'js-cookie' JavaScript library
     <https://github.com/js-cookie/js-cookie>.
 License: MIT + file LICENSE
-URL: https://github.com/r4ds/cookies, https://r4ds.github.io/cookies/
-BugReports: https://github.com/r4ds/cookies/issues
+URL: https://shinyworks.github.io/cookies/,
+    https://github.com/shinyworks/cookies
+BugReports: https://github.com/shinyworks/cookies/issues
 Imports: 
     cli,
     clock,

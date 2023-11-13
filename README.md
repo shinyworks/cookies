@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cookies <a href="https://r4ds.github.io/cookies/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
+# cookies <a href="https://shinyworks.github.io/cookies/"><img src="man/figures/logo.svg" align="right" height="424" /></a>
 
 <!-- badges: start -->
 
@@ -10,8 +10,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/cookies)](https://CRAN.R-project.org/package=cookies)
 [![Codecov test
-coverage](https://codecov.io/gh/r4ds/cookies/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r4ds/cookies?branch=main)
-[![R-CMD-check](https://github.com/r4ds/cookies/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r4ds/cookies/actions/workflows/R-CMD-check.yaml)
+coverage](https://codecov.io/gh/shinyworks/cookies/branch/main/graph/badge.svg)](https://app.codecov.io/gh/shinyworks/cookies?branch=main)
+[![R-CMD-check](https://github.com/shinyworks/cookies/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/shinyworks/cookies/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Cookies are name-value pairs that are saved in a user’s browser by a
@@ -31,8 +31,8 @@ Or install the development version of {cookies} from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("r4ds/cookies")
+# install.packages("pak")
+pak::pak("shinyworks/cookies")
 ```
 
 ## Use Cases

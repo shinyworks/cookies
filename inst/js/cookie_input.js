@@ -17,6 +17,9 @@ function getCookies(){
 
 Shiny.addCustomMessageHandler('cookie-set', function(msg){
   try {
+    if (typeof msg.value == "object") {
+      msg.value = JSON.stringify(msg.value)
+    }
     Cookies.set(msg.name, msg.value, msg.attributes);
     let cookie = Cookies.get(msg.name);
     if (cookie === undefined) {

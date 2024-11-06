@@ -10,6 +10,9 @@ jobs:
   deploy-shinyapps:
     if: github.repository_owner == 'shinyworks'
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
       - uses: r-lib/actions/setup-r@v2

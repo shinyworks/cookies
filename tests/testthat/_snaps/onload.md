@@ -50,7 +50,7 @@
       
       $headers
       $headers$`Set-cookie`
-      name_of_cookie=contents%20of%20the%20cookie
+      name_of_cookie=contents%20of%20the%20cookie; 
       
       $headers$`X-UA-Compatible`
       [1] "IE=edge,chrome=1"

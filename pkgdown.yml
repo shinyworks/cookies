@@ -1,9 +1,8 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-12-21T19:21Z
+last_built: 2024-11-06T13:03Z
 urls:
-  reference: https://shinyworks.github.io/cookies/reference
-  article: https://shinyworks.github.io/cookies/articles
-
+  reference: https://cookies.shinyworks.org/reference
+  article: https://cookies.shinyworks.org/articles

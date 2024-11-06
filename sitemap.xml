@@ -1,117 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://shinyworks.github.io/cookies/404.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/index.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/add_cookie_handlers.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/cookie_dependency.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/cookies-package.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-attributes_string.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-generate_http_attribute_strings.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-http_attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-http_cookie_string.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-http_date.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-is_http_only.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-javascript_attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-root_session.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-shared-parameters.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-shiny_toJSON.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_domain.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_expiration.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_http_only.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_logical_scalar.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_path.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_same_site.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_scalar.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/dot-validate_secure_only.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/extract_cookie.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/extract_cookies.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/get_cookie.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/remove_cookie.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/set_cookie.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/set_cookie_on_load.html</loc>
-  </url>
-  <url>
-    <loc>https://shinyworks.github.io/cookies/reference/set_cookie_response.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://cookies.shinyworks.org/404.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/CONTRIBUTING.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/LICENSE-text.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/LICENSE.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/authors.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/index.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/news/index.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/add_cookie_handlers.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/cookie_dependency.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/cookies-package.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-attributes_string.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-generate_http_attribute_strings.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-http_attributes.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-http_cookie_string.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-http_date.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-is_http_only.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-javascript_attributes.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-root_session.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-shared-parameters.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-shiny_toJSON.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_attributes.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_domain.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_expiration.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_http_only.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_logical_scalar.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_path.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_same_site.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_scalar.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/dot-validate_secure_only.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/extract_cookie.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/extract_cookies.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/get_cookie.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/index.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/remove_cookie.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/set_cookie.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/set_cookie_on_load.html</loc></url>
+<url><loc>https://cookies.shinyworks.org/reference/set_cookie_response.html</loc></url>
 </urlset>
+

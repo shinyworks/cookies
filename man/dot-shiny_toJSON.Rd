@@ -32,7 +32,7 @@
     \item{\code{factor}}{how to encode factor objects: must be one of 'string' or 'integer'}
     \item{\code{complex}}{how to encode complex numbers: must be one of 'string' or 'list'}
     \item{\code{raw}}{how to encode raw objects: must be one of 'base64', 'hex' or 'mongo'}
-    \item{\code{pretty}}{adds indentation whitespace to JSON output. Can be TRUE/FALSE or a number specifying the number of spaces to indent. See \code{\link[jsonlite:prettify]{prettify()}}}
+    \item{\code{pretty}}{adds indentation whitespace to JSON output. Can be TRUE/FALSE or a number specifying the number of spaces to indent (default is 2). Use a negative number for tabs instead of spaces.}
   }}
 
 \item{dataframe}{how to encode data.frame objects: must be one of 'rows', 'columns' or 'values'}

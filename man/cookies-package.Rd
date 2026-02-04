@@ -11,7 +11,7 @@ Browser cookies are name-value pairs that are saved in a user's browser by a web
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://shinyworks.github.io/cookies/}
+  \item \url{https://cookies.shinyworks.org/}
   \item \url{https://github.com/shinyworks/cookies}
   \item Report bugs at \url{https://github.com/shinyworks/cookies/issues}
 }

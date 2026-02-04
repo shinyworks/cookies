@@ -19,7 +19,7 @@ License: MIT + file LICENSE
 URL: https://cookies.shinyworks.org/,
     https://github.com/shinyworks/cookies
 BugReports: https://github.com/shinyworks/cookies/issues
-Imports: 
+Imports:
     cli,
     clock,
     glue,
@@ -29,9 +29,8 @@ Imports:
     purrr,
     rlang,
     shiny (>= 1.6.0),
-    stats,
     vctrs
-Suggests: 
+Suggests:
     covr,
     pkgdown,
     rmarkdown,
@@ -41,4 +40,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3

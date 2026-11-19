@@ -1,8 +1,0 @@
-pandoc: 3.7.0.2
-pkgdown: 2.2.1
-pkgdown_sha: ~
-articles: {}
-last_built: 2026-11-19T14:48Z
-urls:
-  reference: https://cookies.shinyworks.org/reference
-  article: https://cookies.shinyworks.org/articles

@@ -8,19 +8,19 @@ add_cookie_handlers(ui)
 }
 \arguments{
 \item{ui}{A 0- or 1-argument function defining the ui of a shiny app, or a
-\code{\link[shiny:reexports]{shiny::tagList()}}.}
+\code{\link[shiny:tagList]{shiny::tagList()}}.}
 }
 \value{
 An object with the same signature as the input \code{ui}, but with the
-dependencies needed to handle cookies. If \code{ui} is a \code{\link[shiny:reexports]{shiny::tagList()}}, a
-\code{\link[shiny:reexports]{shiny::tagList()}} will be returned; if \code{ui} is a function, a function will
+dependencies needed to handle cookies. If \code{ui} is a \code{\link[shiny:tagList]{shiny::tagList()}}, a
+\code{\link[shiny:tagList]{shiny::tagList()}} will be returned; if \code{ui} is a function, a function will
 be returned.
 }
 \description{
 Wrap a shiny ui in this function in order to add cookie-handling
 functionality. The ui can be defined in any format compatible with shiny,
 using functions such as \code{\link[shiny:fluidPage]{shiny::fluidPage()}}, \code{\link[shiny:bootstrapPage]{shiny::bootstrapPage()}},
-\code{\link[shiny:reexports]{shiny::htmlTemplate()}}, or a raw HTML string.
+\code{\link[shiny:htmlTemplate]{shiny::htmlTemplate()}}, or a raw HTML string.
 }
 \examples{
 str(add_cookie_handlers("example"))

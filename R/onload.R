@@ -11,13 +11,15 @@
 #' @examples
 #' set_cookie_on_load("my_cookie", "contents of my cookie")
 #' set_cookie_on_load("my_cookie", "contents of my cookie", expiration = 10)
-set_cookie_on_load <- function(cookie_name,
-                               cookie_value,
-                               expiration = 90,
-                               secure_only = NULL,
-                               domain = NULL,
-                               path = NULL,
-                               same_site = NULL) {
+set_cookie_on_load <- function(
+  cookie_name,
+  cookie_value,
+  expiration = 90,
+  secure_only = NULL,
+  domain = NULL,
+  path = NULL,
+  same_site = NULL
+) {
   attributes <- .javascript_attributes(
     expiration = expiration,
     secure_only = secure_only,
@@ -69,16 +71,18 @@ set_cookie_on_load <- function(cookie_name,
 #'   "my_cookie", "contents of my cookie",
 #'   redirect = "/"
 #' )
-set_cookie_response <- function(cookie_name,
-                                cookie_value,
-                                expiration = 90,
-                                secure_only = NULL,
-                                domain = NULL,
-                                path = NULL,
-                                same_site = NULL,
-                                http_only = FALSE,
-                                redirect = NULL,
-                                ...) {
+set_cookie_response <- function(
+  cookie_name,
+  cookie_value,
+  expiration = 90,
+  secure_only = NULL,
+  domain = NULL,
+  path = NULL,
+  same_site = NULL,
+  http_only = FALSE,
+  redirect = NULL,
+  ...
+) {
   headers <- list(
     `Set-cookie` = .http_cookie_string(
       cookie_name = cookie_name,

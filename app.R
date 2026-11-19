@@ -22,7 +22,6 @@ ui <- shiny::fluidPage(
         "What is your name?"
       )
     ),
-
   ),
   shiny::fluidRow(
     shiny::column(

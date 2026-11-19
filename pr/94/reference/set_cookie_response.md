@@ -99,7 +99,7 @@ set_cookie_response("my_cookie", "contents of my cookie")
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:42:39 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:49:03 GMT
 #> 
 #> $headers$`X-Content-Type-Options`
 #> [1] "nosniff"
@@ -119,7 +119,7 @@ set_cookie_response("my_cookie", "contents of my cookie", expiration = 10)
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 29 Nov 2026 14:42:39 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 29 Nov 2026 14:49:03 GMT
 #> 
 #> $headers$`X-Content-Type-Options`
 #> [1] "nosniff"
@@ -142,7 +142,7 @@ set_cookie_response(
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:42:39 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:49:03 GMT
 #> 
 #> $headers$`X-Content-Type-Options`
 #> [1] "nosniff"
@@ -165,7 +165,7 @@ set_cookie_response(
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:42:39 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:49:03 GMT
 #> 
 #> $headers$Location
 #> [1] "/"

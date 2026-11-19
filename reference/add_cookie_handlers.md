@@ -5,7 +5,7 @@ functionality. The ui can be defined in any format compatible with
 shiny, using functions such as
 [`shiny::fluidPage()`](https://rdrr.io/pkg/shiny/man/fluidPage.html),
 [`shiny::bootstrapPage()`](https://rdrr.io/pkg/shiny/man/bootstrapPage.html),
-[`shiny::htmlTemplate()`](https://rdrr.io/pkg/shiny/man/reexports.html),
+[`shiny::htmlTemplate()`](https://rstudio.github.io/htmltools/reference/htmlTemplate.html),
 or a raw HTML string.
 
 ## Usage
@@ -19,15 +19,16 @@ add_cookie_handlers(ui)
 - ui:
 
   A 0- or 1-argument function defining the ui of a shiny app, or a
-  [`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html).
+  [`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html).
 
 ## Value
 
 An object with the same signature as the input `ui`, but with the
 dependencies needed to handle cookies. If `ui` is a
-[`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html), a
-[`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html) will
-be returned; if `ui` is a function, a function will be returned.
+[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html),
+a
+[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html)
+will be returned; if `ui` is a function, a function will be returned.
 
 ## Examples
 

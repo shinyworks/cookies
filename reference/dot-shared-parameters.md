@@ -61,4 +61,4 @@ so I gather their definitions in one easy-to-find place.
 - ui:
 
   A 0- or 1-argument function defining the ui of a shiny app, or a
-  [`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html).
+  [`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html).

@@ -1,9 +1,9 @@
 # Shiny tag to add cookies on page load
 
 Generate a
-[`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html) which
-uses JavaScript to set a cookie in the user's browser when the shiny app
-loads.
+[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html)
+which uses JavaScript to set a cookie in the user's browser when the
+shiny app loads.
 
 ## Usage
 
@@ -60,7 +60,8 @@ set_cookie_on_load(
 
 ## Value
 
-A [`shiny::tagList()`](https://rdrr.io/pkg/shiny/man/reexports.html)
+A
+[`shiny::tagList()`](https://rstudio.github.io/htmltools/reference/tagList.html)
 that provides the HTML and javascript to set the cookie.
 
 ## Examples

@@ -21,6 +21,11 @@ Useful links:
 **Maintainer**: Jon Harmon <jonthegeek@gmail.com>
 ([ORCID](https://orcid.org/0000-0003-4781-4346)) \[copyright holder\]
 
+Authors:
+
+- Jon Harmon <jonthegeek@gmail.com>
+  ([ORCID](https://orcid.org/0000-0003-4781-4346)) \[copyright holder\]
+
 Other contributors:
 
 - Klaus Hartl (js-cookie JavaScript library) \[copyright holder\]

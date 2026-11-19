@@ -99,10 +99,10 @@ set_cookie_response("my_cookie", "contents of my cookie")
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 05 May 2026 11:59:51 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:54:49 GMT
 #> 
-#> $headers$`X-UA-Compatible`
-#> [1] "IE=edge,chrome=1"
+#> $headers$`X-Content-Type-Options`
+#> [1] "nosniff"
 #> 
 #> 
 #> attr(,"class")
@@ -119,10 +119,10 @@ set_cookie_response("my_cookie", "contents of my cookie", expiration = 10)
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Sat, 14 Feb 2026 11:59:51 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Sun, 29 Nov 2026 14:54:49 GMT
 #> 
-#> $headers$`X-UA-Compatible`
-#> [1] "IE=edge,chrome=1"
+#> $headers$`X-Content-Type-Options`
+#> [1] "nosniff"
 #> 
 #> 
 #> attr(,"class")
@@ -142,10 +142,10 @@ set_cookie_response(
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 05 May 2026 11:59:51 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:54:49 GMT
 #> 
-#> $headers$`X-UA-Compatible`
-#> [1] "IE=edge,chrome=1"
+#> $headers$`X-Content-Type-Options`
+#> [1] "nosniff"
 #> 
 #> 
 #> attr(,"class")
@@ -165,13 +165,13 @@ set_cookie_response(
 #> 
 #> $headers
 #> $headers$`Set-cookie`
-#> my_cookie=contents%20of%20my%20cookie; Expires=Tue, 05 May 2026 11:59:51 GMT
+#> my_cookie=contents%20of%20my%20cookie; Expires=Wed, 17 Feb 2027 14:54:49 GMT
 #> 
 #> $headers$Location
 #> [1] "/"
 #> 
-#> $headers$`X-UA-Compatible`
-#> [1] "IE=edge,chrome=1"
+#> $headers$`X-Content-Type-Options`
+#> [1] "nosniff"
 #> 
 #> 
 #> attr(,"class")

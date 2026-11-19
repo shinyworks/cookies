@@ -34,7 +34,32 @@ formats things in the way shiny's JS functions expect.
 - ...:
 
   Arguments passed on to
-  [`jsonlite::toJSON`](https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html)
+  [`jsonlite::toJSON`](https://rdrr.io/pkg/jsonlite/man/fromJSON.html)
+
+  `txt`
+
+  :   a JSON string, URL or file
+
+  `simplifyVector`
+
+  :   coerce JSON arrays containing only primitives into an atomic
+      vector
+
+  `simplifyDataFrame`
+
+  :   coerce JSON arrays containing only records (JSON objects) into a
+      data frame
+
+  `simplifyMatrix`
+
+  :   coerce JSON arrays containing vectors of equal mode and dimension
+      into matrix or array
+
+  `flatten`
+
+  :   automatically
+      [`flatten()`](https://rdrr.io/pkg/jsonlite/man/flatten.html)
+      nested data frames into a single non-nested data frame
 
   `matrix`
 
@@ -81,15 +106,14 @@ formats things in the way shiny's JS functions expect.
 
 - auto_unbox:
 
-  automatically
-  [`unbox()`](https://jeroen.r-universe.dev/jsonlite/reference/unbox.html)
+  automatically [`unbox()`](https://rdrr.io/pkg/jsonlite/man/unbox.html)
   all atomic vectors of length 1. It is usually safer to avoid this and
   instead use the
-  [`unbox()`](https://jeroen.r-universe.dev/jsonlite/reference/unbox.html)
-  function to unbox individual elements. An exception is that objects of
-  class `AsIs` (i.e. wrapped in
-  [`I()`](https://rdrr.io/r/base/AsIs.html)) are not automatically
-  unboxed. This is a way to mark single values as length-1 arrays.
+  [`unbox()`](https://rdrr.io/pkg/jsonlite/man/unbox.html) function to
+  unbox individual elements. An exception is that objects of class
+  `AsIs` (i.e. wrapped in [`I()`](https://rdrr.io/r/base/AsIs.html)) are
+  not automatically unboxed. This is a way to mark single values as
+  length-1 arrays.
 
 - digits:
 

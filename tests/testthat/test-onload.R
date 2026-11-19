@@ -12,6 +12,13 @@ test_that("set_cookie_on_load returns the expected tagList.", {
       expiration = 27
     )
   )
+  expect_snapshot(
+    set_cookie_on_load(
+      cookie_name = "name_of_cookie",
+      cookie_value = "contents of the cookie",
+      secure_only = TRUE
+    )
+  )
 })
 
 test_that("Bad attributes throw errors.", {

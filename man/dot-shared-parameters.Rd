@@ -38,7 +38,7 @@ accessible via secure (\verb{https:}) requests (except on localhost).}
 should probably always be used).}
 
 \item{ui}{A 0- or 1-argument function defining the ui of a shiny app, or a
-\code{\link[shiny:reexports]{shiny::tagList()}}.}
+\code{\link[shiny:tagList]{shiny::tagList()}}.}
 }
 \description{
 These are parameters that are likely to show up in multiple functions, so I

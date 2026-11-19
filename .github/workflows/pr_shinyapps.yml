@@ -1,7 +1,7 @@
 name: pr_shinyapps
 on:
   pull_request:
-    branches: main
+    branches: [main]
     paths-ignore:
       - 'README.md'
   workflow_dispatch:
@@ -9,15 +9,20 @@ on:
 jobs:
   deploy-shinyapps:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/api2r/pkgskills-ci:release
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v6
-      - uses: r-lib/actions/setup-r@v2
+
+      - uses: api2r/actions/install@v1
         with:
-          r-version: '4.2.2'
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::rsconnect
-          cache-version: 1
+          use-container: "true"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          extra-packages: any::rsconnect, any::cpp11
       - name: Push to shinyapps
         run: |
           rsconnect::setAccountInfo(name='r4dscommunity', token=${{secrets.SHINYAPPS_TOKEN}}, secret=${{secrets.SHINYAPPS_SECRET}})

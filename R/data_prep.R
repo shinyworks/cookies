@@ -6,12 +6,14 @@
 #'
 #' @return A list of attributes.
 #' @keywords internal
-.validate_attributes <- function(expiration,
-                                 secure_only,
-                                 domain,
-                                 path,
-                                 same_site,
-                                 http_only) {
+.validate_attributes <- function(
+  expiration,
+  secure_only,
+  domain,
+  path,
+  same_site,
+  http_only
+) {
   secure_only <- .validate_secure_only(secure_only)
   http_only <- .validate_http_only(http_only)
   same_site <- .validate_same_site(same_site, secure_only)
@@ -39,7 +41,9 @@
 #' @keywords internal
 .validate_scalar <- function(arg_value, arg_name, arg_type = "logical") {
   if (length(arg_value) > 1) {
-    cli::cli_abort("{.arg {arg_name}} must be a length-1 {.cls {arg_type}} or NULL.")
+    cli::cli_abort(
+      "{.arg {arg_name}} must be a length-1 {.cls {arg_type}} or NULL."
+    )
   }
   return(arg_value)
 }
@@ -176,11 +180,13 @@
 #'
 #' @return A list of attributes with the names expected by js-cookie.
 #' @keywords internal
-.javascript_attributes <- function(expiration,
-                                   secure_only,
-                                   domain,
-                                   path,
-                                   same_site) {
+.javascript_attributes <- function(
+  expiration,
+  secure_only,
+  domain,
+  path,
+  same_site
+) {
   attributes <- .validate_attributes(
     expiration = expiration,
     secure_only = secure_only,
@@ -218,12 +224,22 @@
 #'
 #' @return Jsonified text.
 #' @keywords internal
-.shiny_toJSON <- function(x, ..., dataframe = "columns", null = "null",
-                          na = "null", auto_unbox = TRUE,
-                          digits = getOption("shiny.json.digits", 16),
-                          use_signif = TRUE, force = TRUE, POSIXt = "ISO8601",
-                          UTC = TRUE, rownames = FALSE, keep_vec_names = TRUE,
-                          strict_atomic = TRUE) {
+.shiny_toJSON <- function(
+  x,
+  ...,
+  dataframe = "columns",
+  null = "null",
+  na = "null",
+  auto_unbox = TRUE,
+  digits = getOption("shiny.json.digits", 16),
+  use_signif = TRUE,
+  force = TRUE,
+  POSIXt = "ISO8601",
+  UTC = TRUE,
+  rownames = FALSE,
+  keep_vec_names = TRUE,
+  strict_atomic = TRUE
+) {
   if (strict_atomic) {
     x <- I(x)
   }
@@ -231,11 +247,19 @@
   # I(x) is so that length-1 atomic vectors get put in [].
   jsonlite::toJSON(
     x,
-    dataframe = dataframe, null = null, na = na,
-    auto_unbox = auto_unbox, digits = digits,
-    use_signif = use_signif, force = force, POSIXt = POSIXt,
-    UTC = UTC, rownames = rownames,
-    keep_vec_names = keep_vec_names, json_verbatim = TRUE, ...
+    dataframe = dataframe,
+    null = null,
+    na = na,
+    auto_unbox = auto_unbox,
+    digits = digits,
+    use_signif = use_signif,
+    force = force,
+    POSIXt = POSIXt,
+    UTC = UTC,
+    rownames = rownames,
+    keep_vec_names = keep_vec_names,
+    json_verbatim = TRUE,
+    ...
   )
 }
 
@@ -249,14 +273,16 @@
 #' @return A string in the form "Set-Cookie: cookie-name=cookie-value;
 #'   Expires=date", etc.
 #' @keywords internal
-.http_cookie_string <- function(cookie_name,
-                                cookie_value,
-                                expiration,
-                                secure_only,
-                                domain,
-                                path,
-                                same_site,
-                                http_only) {
+.http_cookie_string <- function(
+  cookie_name,
+  cookie_value,
+  expiration,
+  secure_only,
+  domain,
+  path,
+  same_site,
+  http_only
+) {
   cookie_name <- utils::URLencode(cookie_name, reserved = TRUE)
   cookie_value <- utils::URLencode(cookie_value, reserved = TRUE)
   main_string <- glue::glue("{cookie_name}={cookie_value}")
@@ -280,12 +306,14 @@
 #' @return A string with a format like "Domain=domain-value; Secure;
 #'   HttpOnly".
 #' @keywords internal
-.attributes_string <- function(expiration,
-                               secure_only,
-                               domain,
-                               path,
-                               same_site,
-                               http_only) {
+.attributes_string <- function(
+  expiration,
+  secure_only,
+  domain,
+  path,
+  same_site,
+  http_only
+) {
   # Unfortunately the canonical names and the javascript names are close but not
   # QUITE identical. We also convert the expiration (days) to an Expires (date)
   # in here.
@@ -311,12 +339,14 @@
 #'
 #' @return A list of attributes ready for HTTP.
 #' @keywords internal
-.http_attributes <- function(expiration,
-                             secure_only,
-                             domain,
-                             path,
-                             same_site,
-                             http_only) {
+.http_attributes <- function(
+  expiration,
+  secure_only,
+  domain,
+  path,
+  same_site,
+  http_only
+) {
   attributes <- .validate_attributes(
     expiration = expiration,
     secure_only = secure_only,

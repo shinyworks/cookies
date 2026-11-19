@@ -17,14 +17,16 @@
 #'     )
 #'   )
 #' }
-set_cookie <- function(cookie_name,
-                       cookie_value,
-                       expiration = 90,
-                       secure_only = NULL,
-                       domain = NULL,
-                       path = NULL,
-                       same_site = NULL,
-                       session = shiny::getDefaultReactiveDomain()) {
+set_cookie <- function(
+  cookie_name,
+  cookie_value,
+  expiration = 90,
+  secure_only = NULL,
+  domain = NULL,
+  path = NULL,
+  same_site = NULL,
+  session = shiny::getDefaultReactiveDomain()
+) {
   # When the app first loads, you might get a weird race condition where the
   # input isn't populated yet, so even normal cookies look like http-only
   # cookies.
@@ -48,7 +50,8 @@ set_cookie <- function(cookie_name,
 
   # Create an observer to fail if the cookie fails to save. This should never
   # happen but maybe they don't have write access or something similarly weird.
-  shiny::observeEvent( # nocov start
+  shiny::observeEvent(
+    # nocov start
     .root_session(session)$input$cookie_set_error,
     cli::cli_abort(.root_session(session)$input$cookie_set_error),
     ignoreInit = TRUE,
@@ -81,8 +84,10 @@ set_cookie <- function(cookie_name,
 #'     remove_cookie("my_cookie")
 #'   )
 #' }
-remove_cookie <- function(cookie_name,
-                          session = shiny::getDefaultReactiveDomain()) {
+remove_cookie <- function(
+  cookie_name,
+  session = shiny::getDefaultReactiveDomain()
+) {
   if (.is_http_only(cookie_name, session)) {
     cli::cli_abort(
       c(
@@ -96,7 +101,8 @@ remove_cookie <- function(cookie_name,
   # Create an observer to fail if the cookie fails to be removed. This should
   # never happen but maybe they don't have write access or something similarly
   # weird.
-  shiny::observeEvent( # nocov start
+  shiny::observeEvent(
+    # nocov start
     .root_session(session)$input$cookie_remove_error,
     cli::cli_abort(
       c(
@@ -127,9 +133,11 @@ remove_cookie <- function(cookie_name,
 #' server <- function(input, output, session) {
 #'   get_cookie("my_cookie")
 #' }
-get_cookie <- function(cookie_name,
-                       missing = NULL,
-                       session = shiny::getDefaultReactiveDomain()) {
+get_cookie <- function(
+  cookie_name,
+  missing = NULL,
+  session = shiny::getDefaultReactiveDomain()
+) {
   # The values we need are stored in the root session.
   session <- .root_session(session)
 
@@ -181,8 +189,10 @@ get_cookie <- function(cookie_name,
 #'
 #' @return A logical indicating whether `cookie_name` is http-only.
 #' @keywords internal
-.is_http_only <- function(cookie_name,
-                          session = shiny::getDefaultReactiveDomain()) {
+.is_http_only <- function(
+  cookie_name,
+  session = shiny::getDefaultReactiveDomain()
+) {
   session <- .root_session(session)
 
   # If the input$cookies_start object hasn't initialized yet, we can't do this

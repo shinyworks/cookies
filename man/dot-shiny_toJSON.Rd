@@ -25,8 +25,13 @@
 \item{x}{the object to be encoded}
 
 \item{...}{
-  Arguments passed on to \code{\link[jsonlite:fromJSON]{jsonlite::toJSON}}
+  Arguments passed on to \code{\link[jsonlite:toJSON]{jsonlite::toJSON}}
   \describe{
+    \item{\code{txt}}{a JSON string, URL or file}
+    \item{\code{simplifyVector}}{coerce JSON arrays containing only primitives into an atomic vector}
+    \item{\code{simplifyDataFrame}}{coerce JSON arrays containing only records (JSON objects) into a data frame}
+    \item{\code{simplifyMatrix}}{coerce JSON arrays containing vectors of equal mode and dimension into matrix or array}
+    \item{\code{flatten}}{automatically \code{\link[jsonlite:flatten]{flatten()}} nested data frames into a single non-nested data frame}
     \item{\code{matrix}}{how to encode matrices and higher dimensional arrays: must be one of 'rowmajor' or 'columnmajor'.}
     \item{\code{Date}}{how to encode Date objects: must be one of 'ISO8601' or 'epoch'}
     \item{\code{factor}}{how to encode factor objects: must be one of 'string' or 'integer'}

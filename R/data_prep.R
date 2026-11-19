@@ -193,7 +193,7 @@
   # The Javascript names don't match the R names.
   js_attributes <- list(
     expires = attributes$expiration,
-    secureOnly = attributes$secure_only,
+    secure = attributes$secure_only,
     domain = attributes$domain,
     path = attributes$path,
     sameSite = attributes$same_site

@@ -1,5 +1,7 @@
 # cookies (development version)
 
+* `set_cookie()` and `set_cookie_on_load()` now correctly set the `Secure` attribute when `secure_only = TRUE` (@SoerenGreule, #92).
+
 # cookies 0.2.3
 
 * Better handling of race-time conditions between R and JavaScript (#63).

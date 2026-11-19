@@ -13,6 +13,14 @@
     Output
       <script>Cookies.set("name_of_cookie", "contents of the cookie", {"expires":27});</script>
 
+---
+
+    Code
+      set_cookie_on_load(cookie_name = "name_of_cookie", cookie_value = "contents of the cookie",
+        secure_only = TRUE)
+    Output
+      <script>Cookies.set("name_of_cookie", "contents of the cookie", {"expires":90,"secure":true});</script>
+
 # Bad attributes throw errors.
 
     `expiration` must be a length-1 <double> or NULL.

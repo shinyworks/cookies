@@ -20,7 +20,7 @@
         expiration = 22, secure_only = TRUE, domain = "this", path = "/docs/",
         same_site = "None", session = session)
     Output
-      {"name":["testname"],"value":["test contents"],"attributes":{"expires":[22],"secureOnly":[true],"domain":["this"],"path":["/docs/"],"sameSite":["None"]}} 
+      {"name":["testname"],"value":["test contents"],"attributes":{"expires":[22],"secure":[true],"domain":["this"],"path":["/docs/"],"sameSite":["None"]}} 
 
 ---
 

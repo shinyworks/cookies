@@ -52,8 +52,8 @@
       $headers$`Set-cookie`
       name_of_cookie=contents%20of%20the%20cookie; 
       
-      $headers$`X-UA-Compatible`
-      [1] "IE=edge,chrome=1"
+      $headers$`X-Content-Type-Options`
+      [1] "nosniff"
       
       
       attr(,"class")
@@ -78,8 +78,8 @@
       $headers$`Set-cookie`
       name_of_cookie=contents%20of%20the%20cookie; HttpOnly
       
-      $headers$`X-UA-Compatible`
-      [1] "IE=edge,chrome=1"
+      $headers$`X-Content-Type-Options`
+      [1] "nosniff"
       
       
       attr(,"class")
@@ -107,8 +107,8 @@
       $headers$Location
       [1] "/"
       
-      $headers$`X-UA-Compatible`
-      [1] "IE=edge,chrome=1"
+      $headers$`X-Content-Type-Options`
+      [1] "nosniff"
       
       
       attr(,"class")
@@ -140,8 +140,8 @@
       $headers$Location
       [1] "/"
       
-      $headers$`X-UA-Compatible`
-      [1] "IE=edge,chrome=1"
+      $headers$`X-Content-Type-Options`
+      [1] "nosniff"
       
       
       attr(,"class")

@@ -39,11 +39,11 @@ the cookie should be sent. When \code{same_site = "none"}, \code{secure_only} mu
 \code{TRUE}.}
 }
 \value{
-A \code{\link[shiny:reexports]{shiny::tagList()}} that provides the HTML and javascript to set the
+A \code{\link[shiny:tagList]{shiny::tagList()}} that provides the HTML and javascript to set the
 cookie.
 }
 \description{
-Generate a \code{\link[shiny:reexports]{shiny::tagList()}} which uses JavaScript to set a cookie in the
+Generate a \code{\link[shiny:tagList]{shiny::tagList()}} which uses JavaScript to set a cookie in the
 user's browser when the shiny app loads.
 }
 \examples{

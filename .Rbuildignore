@@ -13,3 +13,6 @@
 ^app\.R
 ^R/_disable_autoload\.R$
 ^revdep$
+^AGENTS\.md$
+^[.]?air[.]toml$
+^\.vscode$

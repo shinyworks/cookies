@@ -2,6 +2,13 @@
 
 ## cookies (development version)
 
+- [`set_cookie()`](https://cookies.shinyworks.org/reference/set_cookie.md)
+  and
+  [`set_cookie_on_load()`](https://cookies.shinyworks.org/reference/set_cookie_on_load.md)
+  now correctly set the `Secure` attribute when `secure_only = TRUE`
+  ([@SoerenGreule](https://github.com/SoerenGreule),
+  [\#92](https://github.com/shinyworks/cookies/issues/92)).
+
 ## cookies 0.2.3
 
 CRAN release: 2023-10-02
